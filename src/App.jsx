@@ -1,5 +1,6 @@
 /* eslint-disable space-before-function-paren */
 /* eslint-disable semi */
+/* eslint-disable semi */
 function App() {
   return (
     <>

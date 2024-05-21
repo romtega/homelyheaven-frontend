@@ -24,6 +24,7 @@ html {
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+  font-size: 62.5%; /* 10px */
 }
 
 /* Eliminar Margen Predeterminado en Elementos Comunes */
@@ -58,6 +59,7 @@ a {
 body {
   -webkit-font-smoothing: antialiased;
   line-height: 1.5;
+  font-family: var(--ff-sans-normal);
 }
 
 /* Para evitar alturas de linea predeterminadas */
@@ -123,4 +125,143 @@ textarea:not([rows]) {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ------------------- */
+/* Custom properties   */
+/* ------------------- */
+
+:root {
+  /* font-families */
+  --ff-sans-cond: "Roboto Condensed";
+  --ff-sans-normal: "Roboto";
+  --ff-sans-serif: sans-serif;
+
+  /* colors */
+  --clr-dark: 267, 100%, 4%;
+  --clr-gray: 0, 0%, 32%;
+  --clr-white: 0, 0%, 100%;
+  --clr-primary: 155, 75%, 16%;
+  --clr-secondary: 65, 67%, 42%;
+  --clr-accent: 38, 59%, 83%;
+}
+
+/* ------------------- */
+/*   Utility classes   */
+/* ------------------- */
+
+/* general */
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+.grid {
+  display: grid;
+  gap: var(--gap, 1rem);
+}
+
+.d-block {
+  display: block;
+}
+
+.d-inline {
+  display: inline;
+}
+
+.flow > *:where(:not(:first-child)) {
+  margin-top: var(--flow-space, 1rem);
+}
+
+/* colors */
+
+.bg-dark {
+  background-color: hsl(var(--clr-dark));
+}
+
+.bg-gray {
+  background-color: hsl(var(--clr-gray));
+}
+
+.bg-white {
+  background-color: hsl(var(--clr-white));
+}
+
+.bg-primary {
+  background-color: hsl(var(--clr-primary));
+}
+
+.bg-secondary {
+  background-color: hsl(var(--clr-secondary));
+}
+
+.bg-accent {
+  background-color: hsl(var(--clr-accent));
+}
+
+.text-dark {
+  color: hsl(var(--clr-dark));
+}
+
+.text-gray {
+  color: hsl(var(--clr-gray));
+}
+
+.text-white {
+  color: hsl(var(--clr-white));
+}
+
+.text-primary {
+  color: hsl(var(--clr-primary));
+}
+
+.text-secondary {
+  color: hsl(var(--clr-secondary));
+}
+
+.text-accent {
+  color: hsl(var(--clr-accent));
+}
+
+/* typography */
+
+.ff-serif {
+  font-family: var(--ff-serif);
+}
+.ff-cond {
+  font-family: var(--ff-sans-cond);
+}
+.ff-normal {
+  font-family: var(--ff-sans-normal);
+}
+
+.letter-spacing-1 {
+  letter-spacing: 4.75px;
+}
+.letter-spacing-2 {
+  letter-spacing: 2.7px;
+}
+.letter-spacing-3 {
+  letter-spacing: 2.35px;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.fw-1 {
+  font-weight: 300;
+}
+.fw-2 {
+  font-weight: 400;
+}
+.fw-3 {
+  font-weight: 500;
+}
+.fw-4 {
+  font-weight: 700;
 }

@@ -2,6 +2,6 @@
 /* eslint-disable semi */
 /* eslint-disable jsx-quotes */
 
-import Navbar from "./navbar";
+import Hero from "./hero";
 
-export default Navbar;
+export default Hero;

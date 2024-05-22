@@ -1,0 +1,12 @@
+.chevron__svg {
+  width: 7rem;
+  aspect-ratio: 1;
+  position: fixed;
+  z-index: 100;
+  cursor: pointer;
+  right: 2.4rem;
+  bottom: 2.4rem;
+  fill: hsl(var(--clr-dark));
+  border-radius: 50vw;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.3);
+}

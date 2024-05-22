@@ -1,7 +1,6 @@
 .navbar {
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid hsl(var(--clr-primary));
   padding: 2rem 4rem;
 }
 

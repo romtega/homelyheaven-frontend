@@ -1,7 +1,6 @@
 /* eslint-disable quotes */
 /* eslint-disable semi */
 /* eslint-disable jsx-quotes */
+import ChevronBtn from "./chevronbtn";
 
-import Navbar from "./navbar";
-
-export default Navbar;
+export default ChevronBtn;

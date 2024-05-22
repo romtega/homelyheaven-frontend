@@ -1,6 +1,6 @@
 /* eslint-disable quotes */
 /* eslint-disable semi */
 /* eslint-disable jsx-quotes */
-import ChevronBtn from "./ChevronBtn";
+import UserProfile from "./UserProfile";
 
-export default ChevronBtn;
+export default UserProfile;

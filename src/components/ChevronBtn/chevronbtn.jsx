@@ -4,7 +4,7 @@
 
 import "./chevronbtn.css";
 
-const Chevronbtn = () => {
+const ChevronBtn = () => {
   return (
     <svg
       className="chevron__svg"
@@ -15,4 +15,4 @@ const Chevronbtn = () => {
     </svg>
   );
 };
-export default Chevronbtn;
+export default ChevronBtn;

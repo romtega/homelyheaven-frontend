@@ -1,21 +1,20 @@
 /* eslint-disable quotes */
 /* eslint-disable space-before-function-paren */
 /* eslint-disable semi */
-import ChevronBtn from "./components/ChevronBtn";
-import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
-import Features from "./components/Features";
-import Footer from "./components/Footer/Footer";
+import { BrowserRouter } from "react-router-dom";
+import ChevronBtn from "@/components/ChevronBtn";
+import Navbar from "@/components/Navbar";
+import RoutesIndex from "./routes/RoutesIndex";
+import Footer from "@/components/Footer";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <ChevronBtn />
       <Navbar />
-      <Hero />
-      <Features />
+      <RoutesIndex />
       <Footer />
-    </>
+    </BrowserRouter>
   );
 }
 

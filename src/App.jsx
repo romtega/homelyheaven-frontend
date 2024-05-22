@@ -4,6 +4,8 @@
 import ChevronBtn from "./components/ChevronBtn";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
+import Features from "./components/Features";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -11,6 +13,8 @@ function App() {
       <ChevronBtn />
       <Navbar />
       <Hero />
+      <Features />
+      <Footer />
     </>
   );
 }

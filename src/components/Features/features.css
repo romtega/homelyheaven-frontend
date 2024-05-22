@@ -1,0 +1,26 @@
+.features {
+  margin: 4rem 14rem;
+}
+.features__title {
+  place-content: center;
+  margin-block: 6rem;
+}
+
+.features__steps {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.features__step {
+  --gap: 0;
+  flex-direction: column;
+  padding: 0 4rem 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.features__number {
+  font-size: 6rem;
+}
+
+.features__description {
+  margin-top: 2rem;
+}

@@ -1,7 +1,6 @@
 /* eslint-disable quotes */
 /* eslint-disable semi */
 /* eslint-disable jsx-quotes */
+import Footer from "./Footer";
 
-import Navbar from "./Navbar";
-
-export default Navbar;
+export default Footer;

@@ -2,6 +2,6 @@
 /* eslint-disable semi */
 /* eslint-disable jsx-quotes */
 
-import Navbar from "./Navbar";
+import Features from "./Features";
 
-export default Navbar;
+export default Features;

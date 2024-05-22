@@ -1,0 +1,43 @@
+.navbar {
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid hsl(var(--clr-primary));
+  padding: 2rem 4rem;
+}
+
+.navbar__logo {
+  font-weight: bold;
+}
+
+.navbar__search {
+  border: 1px solid hsl(var(--clr-primary));
+  border-radius: 50vw;
+  min-width: 400px;
+}
+
+.navbar__form {
+  justify-content: space-between;
+}
+
+.navbar__input {
+  border: none;
+  outline: none;
+  padding: 1rem 2rem;
+  background-color: transparent;
+}
+
+.navbar__btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 50vw;
+  padding: 1rem;
+  background-color: transparent;
+}
+
+.navbar__user-action {
+  font-size: 1.6rem;
+  color: hsl(var(--clr-dark));
+  border: 1px solid hsl(var(--clr-primary));
+  border-radius: 50vw;
+  padding: 1.2rem;
+}

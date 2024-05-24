@@ -9,28 +9,12 @@ const UserForm = () => {
     email: "",
     password: "",
     username: "",
-  });
+  })
 
   const handleChange = (event) => {
     const { name, value } = event.target
     setFormData((prevData) => ({ ...prevData, [name]: value }))
   }
-
-/*   const handlePhoneValidation = (value) => {
-    const regex = /^\d{10}$/ // para que sean los 10 dígitos
-    if (!regex.test(value)) {
-      return "El teléfono debe tener 10 dígitos"
-    }
-    return undefined
-  }
-
-  const handleEmailValidation = (value) => {
-    const regex = /\S+@\S+\.\S+/
-    if (!regex.test(value)) {
-      return "Formato inválido"
-    }
-    return undefined
-  } */
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -81,7 +65,6 @@ const UserForm = () => {
           value={formData.phone}
           onChange={handleChange}
           required
-          // validationMessage={handlePhoneValidation(formData.phone)}
         />
       </div>
       <div>
@@ -93,7 +76,6 @@ const UserForm = () => {
           value={formData.email}
           onChange={handleChange}
           required
-          // validationMessage={handleEmailValidation(formData.email)}
         />
       </div>
       <div>
@@ -109,7 +91,7 @@ const UserForm = () => {
       </div>
       <button type="submit">Submit</button>
     </form>
-  ) 
+  )
 }
 
 export default UserForm

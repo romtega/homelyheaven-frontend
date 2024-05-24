@@ -39,8 +39,6 @@ const PropertyForm = () => {
     event.preventDefault()
     console.log("PropertyForm submitted:", formData)
     /*AGREGAR QUE ESTÁ SUJETO A VALIDACIÓN*/
-    /* Considerar que los datos de dirección se envían a un documento diferente
-     de hecho se deben enviar primero, obtener el id y enviar sólo el id a Housing*/
   }
 
   return (
@@ -85,7 +83,7 @@ const PropertyForm = () => {
         />
       </div>
       <div>
-        <label htmlFor="bedrooms">Camas:</label>
+        <label htmlFor="bedrooms">Dormitorios:</label>
         <input
           type="number"
           id="bedrooms"
@@ -101,7 +99,7 @@ const PropertyForm = () => {
           type="number"
           id="bathrooms"
           name="bathrooms"
-          value={formData.state}
+          value={formData.bathrooms}
           onChange={handleChange}
           required
         />
@@ -151,7 +149,7 @@ const PropertyForm = () => {
         />
       </div>
       <div>
-        <label htmlFor="state">Teléfono:</label>
+        <label htmlFor="state">Estado:</label>
         <input
           type="text"
           id="state"

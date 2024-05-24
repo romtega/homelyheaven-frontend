@@ -1,0 +1,66 @@
+.housing__profile {
+  border-bottom: 1px solid black;
+}
+
+.housing__img {
+  width: 28rem;
+  aspect-ratio: 1;
+  border-radius: 1rem;
+}
+
+.housing__img img {
+}
+
+.housing__info {
+  --gap: 0;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.housing__location {
+  align-self: flex-end;
+}
+
+.housing__cta {
+  --gap: 1rem;
+  margin-top: auto;
+  justify-content: end;
+  align-items: center;
+}
+
+.housing__btn {
+  outline: none;
+  border: none;
+  border-radius: 50%;
+}
+.housing__btn:first-child {
+  border: 1.6px solid hsl(var(--clr-gray));
+  padding: 1rem;
+}
+.housing__btn:last-child {
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.housing__features {
+  flex-direction: column;
+  margin: 3rem 2rem 0;
+  justify-content: space-between;
+}
+.housing__perks {
+  --gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.housing_perk {
+  align-items: center;
+}
+
+.housing_perk i {
+  font-size: 2.4rem;
+}
+
+.housing_perk quote {
+  font-size: 1.4rem;
+  color: hsl(var(--clr-gray), 0.6);
+}

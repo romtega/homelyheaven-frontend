@@ -1,0 +1,42 @@
+.user {
+  --gap: 0;
+  height: calc(100vh - 8rem);
+  margin-inline: 14rem;
+  justify-items: center;
+  grid-template-columns: 1fr 2fr;
+}
+.user__menu {
+  border-right: 1px solid hsl(var(--clr-gray));
+  padding: 10rem;
+  padding-right: 8rem;
+  --gap: 4rem;
+  flex-direction: column;
+}
+
+.user__category:last-child {
+  margin-top: auto;
+}
+.user__category {
+  align-items: center;
+}
+
+.user__info {
+  --gap: 4rem;
+  flex-direction: column;
+  padding-top: 10rem;
+}
+
+.info__summary {
+  justify-content: center;
+}
+.info__img {
+  border: 1px solid black;
+  border-radius: 50vw;
+  width: 10rem;
+  aspect-ratio: 1;
+}
+
+.info__contact {
+  justify-content: space-around;
+  --gap: 10rem;
+}

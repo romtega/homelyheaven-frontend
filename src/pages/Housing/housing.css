@@ -1,0 +1,13 @@
+.section__housing {
+  margin-inline: 14rem;
+  margin-bottom: 2rem;
+  height: calc(100vh - 10rem);
+  border: 1px solid hsl(var(--clr-gray), 0.4);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.housing__list {
+  --gap: 1.4rem;
+  flex-direction: column;
+}

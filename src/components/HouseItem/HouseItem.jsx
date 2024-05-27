@@ -2,9 +2,11 @@
 /* eslint-disable quotes */
 /* eslint-disable space-before-function-paren */
 /* eslint-disable semi */
-import "./house.css";
-import hostImg from "../../assets/hero-host.jpg";
-const House = () => {
+import { Link } from "react-router-dom";
+import "./houseitem.css";
+import hostImg from "@/assets/hero-host.jpg";
+
+const HouseItem = () => {
   return (
     <li className="housing__profile flex">
       <div className="housing__img">
@@ -17,9 +19,11 @@ const House = () => {
           <button className="housing__btn bg-white grid">
             <i className="fa-solid fa-heart text-accent font-lg" />
           </button>
-          <button className="housing__btn bg-primary text-white">
-            Mas información
-          </button>
+          <Link to="/housedetails">
+            <button className="housing__btn bg-primary text-white">
+              Mas información
+            </button>
+          </Link>
         </div>
       </div>
       <div className="housing__features flex">
@@ -55,4 +59,4 @@ const House = () => {
   );
 };
 
-export default House;
+export default HouseItem;

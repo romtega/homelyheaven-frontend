@@ -1,11 +1,8 @@
-/* eslint-disable quotes */
-/* eslint-disable semi */
-/* eslint-disable jsx-quotes */
 import "./features.css";
 
 const Features = () => {
   return (
-    <section className="features">
+    <section className="features" id="#guest">
       <div className="features__title grid">
         <h2 className="font-3">No sabes dónde pasar el fin de semana?</h2>
       </div>

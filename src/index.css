@@ -90,6 +90,8 @@ button,
 textarea,
 select {
   font: inherit;
+  border: none;
+  outline: none;
 }
 
 textarea:not([rows]) {
@@ -129,9 +131,13 @@ textarea:not([rows]) {
   --clr-dark: 267, 100%, 4%;
   --clr-gray: 0, 0%, 32%;
   --clr-white: 0, 0%, 100%;
-  --clr-primary: 162, 86%, 35%;
+  --clr-primary: 151, 17%, 51%;
   --clr-secondary: 47, 100%, 61%;
   --clr-accent: 0, 94%, 65%;
+
+  --height-minus-navbar: calc(100vh - 7.4rem);
+  --border-radius-1: 1rem;
+  --border-radius-2: 2rem;
 }
 
 /* ------------------- */

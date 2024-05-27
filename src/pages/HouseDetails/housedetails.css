@@ -1,0 +1,77 @@
+.section__housedetails {
+  grid-template-columns: 2fr 1fr;
+  margin-inline: 14rem;
+  height: calc(100vh - 10rem);
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+}
+
+.housedetails__info {
+  --gap: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-block: 2rem;
+}
+
+.housedetails__img-wrapper {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.housedetails__img {
+  width: 100%;
+  height: 300px;
+}
+
+.housedetails__header {
+  justify-content: space-between;
+  margin-inline: 2rem;
+}
+
+.housedetails__perks {
+  justify-content: space-between;
+  margin-inline: 2rem;
+}
+
+.housedetails__perk {
+  display: flex;
+  align-items: center;
+}
+
+.housedetails__perk-description {
+  margin-left: 1rem;
+}
+
+.housedetails__description {
+  grid-template-columns: 2.5fr 1.5fr;
+}
+
+.housedetails__text {
+  margin-inline: 2rem;
+}
+
+.housedetails__cta {
+  --gap: 2rem;
+}
+
+.housedetails__btn {
+  border: none;
+  outline: none;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  margin-block: 2rem;
+}
+
+.housedetails__map {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.housedetails__reviews {
+  border: 1px solid hsl(var(--clr-gray), 0.4);
+  border-radius: 1rem;
+  padding: 2rem;
+  flex-direction: column;
+  --gap: 2rem;
+  --flow-space: 2rem;
+}

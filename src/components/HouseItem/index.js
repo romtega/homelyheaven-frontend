@@ -2,6 +2,6 @@
 /* eslint-disable semi */
 /* eslint-disable jsx-quotes */
 
-import House from "./House";
+import HouseItem from "./HouseItem";
 
-export default House;
+export default HouseItem;

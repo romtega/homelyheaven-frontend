@@ -20,5 +20,8 @@ module.exports = {
       { allowConstantExport: true },
     ],
     "react/prop-types": "off",
+    semi: "off",
+    quotes: "off",
+    "jsx-quotes": ["error", "prefer-double"],
   },
 };

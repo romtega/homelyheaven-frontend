@@ -2,7 +2,6 @@
 /* Reset               */
 /* ------------------- */
 
-/* Evita problemas con z-index */
 #root,
 #__next {
   isolation: isolate;
@@ -19,15 +18,14 @@
   padding: 0;
 }
 
-/* Evita el ajuste automatico en diferentes navegadores */
 html {
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   font-size: 62.5%; /* 10px */
+  background-color: hsl(var(--clr-white));
 }
 
-/* Eliminar Margen Predeterminado en Elementos Comunes */
 body,
 h1,
 h2,
@@ -42,27 +40,23 @@ dd {
   overflow-wrap: break-word;
 }
 
-/* Eliminar Estilos de Lista en ul y ol  */
 ul,
 ol {
   list-style: none;
 }
 
-/* Limpia los estilos para links */
 a {
   text-decoration-skip-ink: auto;
   text-decoration: none;
   color: currentColor;
 }
 
-/* Valores perdeterminados para body */
 body {
   -webkit-font-smoothing: antialiased;
   line-height: 1.5;
   font-family: var(--ff-sans-normal);
 }
 
-/* Para evitar alturas de linea predeterminadas */
 h1,
 h2,
 h3,
@@ -73,7 +67,6 @@ label {
   line-height: 1.1;
 }
 
-/* Distribuye mejor las palabras en los elementos h */
 h1,
 h2,
 h3,
@@ -83,7 +76,6 @@ h6 {
   text-wrap: balance;
 }
 
-/* Cubre el espacio total del elemento */
 img,
 picture,
 video,
@@ -93,25 +85,23 @@ svg {
   display: block;
 }
 
-/* Hereda el font family */
 input,
 button,
 textarea,
 select {
   font: inherit;
+  border: none;
+  outline: none;
 }
 
-/* Ajuste de Altura en textareas sin atributo rows */
 textarea:not([rows]) {
   min-height: 10em;
 }
 
-/* Margen de Desplazamiento en Objetivos de Anclaje */
 :target {
   scroll-margin-block: 5ex;
 }
 
-/* remueve las animaciones para personas con discapacidad visual */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
     scroll-behavior: auto;
@@ -141,9 +131,13 @@ textarea:not([rows]) {
   --clr-dark: 267, 100%, 4%;
   --clr-gray: 0, 0%, 32%;
   --clr-white: 0, 0%, 100%;
-  --clr-primary: 155, 75%, 16%;
-  --clr-secondary: 65, 67%, 42%;
-  --clr-accent: 38, 59%, 83%;
+  --clr-primary: 151, 17%, 51%;
+  --clr-secondary: 47, 100%, 61%;
+  --clr-accent: 0, 94%, 65%;
+
+  --height-minus-navbar: calc(100vh - 7.4rem);
+  --border-radius-1: 1rem;
+  --border-radius-2: 2rem;
 }
 
 /* ------------------- */
@@ -264,4 +258,40 @@ textarea:not([rows]) {
 }
 .fw-4 {
   font-weight: 700;
+}
+
+.font-xs {
+  font-size: 1rem; /* 10px */
+}
+
+.font-sm {
+  font-size: 1.2rem; /* 12px */
+}
+
+.font-base {
+  font-size: 1.6rem; /* 16px */
+}
+
+.font-lg {
+  font-size: 2rem; /* 20px */
+}
+
+.font-1 {
+  font-size: 2.4rem; /* 24px */
+}
+
+.font-2 {
+  font-size: 3rem; /* 30px */
+}
+
+.font-3 {
+  font-size: 4rem; /* 40px */
+}
+
+.font-4 {
+  font-size: 5rem; /* 50px */
+}
+
+.font-5 {
+  font-size: 6rem; /* 60px */
 }

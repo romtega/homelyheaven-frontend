@@ -1,0 +1,10 @@
+.housedetails__testimonials-header {
+  justify-content: start;
+}
+
+.housedetails_testimonials-img {
+  border-radius: 50vw;
+  overflow: hidden;
+  height: 6rem;
+  aspect-ratio: 1;
+}

@@ -1,0 +1,64 @@
+.section__navbar {
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.4rem 6rem;
+}
+
+.navbar__logo-wrapper {
+  overflow: hidden;
+  border-radius: 50vw;
+}
+.navbar__logo {
+  height: 70px;
+  transform: scale(1.3);
+}
+
+.navbar__search-wrapper {
+  min-width: 400px;
+  border-radius: 50vw;
+  background-color: hsl(var(--clr-primary), 0.2);
+  overflow: hidden;
+}
+
+.navbar__form {
+  --gap: 0;
+}
+
+.navbar__input {
+  padding-inline: 2rem;
+  background-color: transparent;
+  width: 100%;
+  transition: all 0.4s;
+}
+
+.navbar__input:hover {
+  background-color: hsl(var(--clr-white), 0.4);
+}
+
+.navbar__input:focus {
+  background-color: hsl(var(--clr-white), 0.8);
+}
+
+.navbar__btn {
+  cursor: pointer;
+  border: none;
+  padding: 1rem 2rem;
+}
+
+.navbar__user {
+  --gap: 2rem;
+}
+.navbar__user-icon {
+  background-color: hsl(var(--clr-primary), 0.2);
+  border-radius: 50vw;
+  padding: 1.2rem;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.navbar__user-icon:hover,
+.navbar__user-icon:active {
+  outline: 1px solid hsl(var(--clr-primary));
+  transform: scale(1.2);
+  color: hsl(var(--clr-primary));
+}

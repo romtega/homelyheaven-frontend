@@ -1,12 +1,16 @@
-/* eslint-disable space-before-function-paren */
-/* eslint-disable semi */
-/* eslint-disable semi */
-function App() {
+import { BrowserRouter } from "react-router-dom";
+import Navbar from "@/components/Navbar";
+import RoutesIndex from "./routes/RoutesIndex";
+import Footer from "@/components/Footer";
+
+const App = () => {
   return (
-    <>
-      <h1>Hello word</h1>
-    </>
+    <BrowserRouter>
+      <Navbar />
+      <RoutesIndex />
+      <Footer />
+    </BrowserRouter>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,12 @@
+.section__housing {
+  margin: 0 14rem 2rem;
+  height: var(--height-minus-navbar);
+  border-radius: 2rem;
+  overflow: hidden;
+  background-color: hsl(var(--clr-primary), 0.4);
+}
+
+.housing__list {
+  --gap: 0;
+  flex-direction: column;
+}

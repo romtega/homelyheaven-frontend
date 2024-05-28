@@ -1,0 +1,16 @@
+.footer {
+  padding: 6rem 14rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.footer__section {
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.address {
+  margin-inline-end: 4rem;
+}
+.footer__social-icons {
+  --gap: 3rem;
+}

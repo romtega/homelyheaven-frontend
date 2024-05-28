@@ -1,22 +1,31 @@
-.features {
-  margin: 4rem 14rem;
+.section__features {
+  margin: 8rem 14rem;
 }
 .features__title {
-  place-content: center;
+  text-align: center;
   margin-block: 6rem;
 }
 
 .features__steps {
+  --gap: 0;
   grid-template-columns: repeat(3, 1fr);
 }
 
 .features__step {
   --gap: 0;
   flex-direction: column;
-  padding: 0 4rem 2rem;
+  padding: 0 2rem 2rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  border-radius: var(--border-radius-2);
+  margin: 1rem;
+  background-color: hsl(var(--clr-primary), 0.6);
 }
 
+.features__header {
+  --gap: 2rem;
+  align-items: center;
+  margin-inline: 1rem;
+}
 .features__number {
   font-size: 6rem;
 }

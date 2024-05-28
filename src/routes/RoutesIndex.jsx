@@ -3,7 +3,9 @@ import Home from "@/pages/Home/Home";
 import Housing from "@/pages/Housing";
 import UserProfile from "@/pages/UserProfile";
 import HouseDetails from "@/pages/HouseDetails";
-import Features from "@/components/Features/Features";
+import GuestFeatures from "@/components/GuestFeatures";
+import HostFeatures from "../components/HostFeatures/HostFeatures";
+import NewUserForm from "@/components/NewUserForm";
 
 const RoutesIndex = () => {
   return (
@@ -12,7 +14,9 @@ const RoutesIndex = () => {
       <Route path="/housing" element={<Housing />} />
       <Route path="/user" element={<UserProfile />} />
       <Route path="/housedetails" element={<HouseDetails />} />
-      <Route path="/#guest" element={<Features />} />
+      <Route path="/#guest" element={<GuestFeatures />} />
+      <Route path="/signin" element={<NewUserForm />} />
+      <Route path="/#host" element={<HostFeatures />} />
     </Routes>
   );
 };

@@ -1,6 +1,7 @@
 import ChevronBtn from "@/components/ChevronBtn";
 import Hero from "@/components/Hero";
-import Features from "@/components/Features";
+import HostFeatures from "@/components/HostFeatures";
+import GuestFeatures from "@/components/GuestFeatures";
 
 import "./home.css";
 
@@ -9,7 +10,8 @@ const Home = () => {
     <>
       <ChevronBtn />
       <Hero />
-      <Features />
+      <GuestFeatures />
+      <HostFeatures />
     </>
   );
 };

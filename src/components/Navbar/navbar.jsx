@@ -26,12 +26,14 @@ const Navbar = () => {
       </div>
       <ul className="navbar__user flex">
         <li className="navbar__user-icon font-base">
-          <NavLink to="/user">
+          <NavLink to="/signin">
             <i className="fa-regular fa-user d-block" title="User Account" />
           </NavLink>
         </li>
         <li className="navbar__user-icon font-base">
-          <i className="fa-regular fa-heart d-block" title="Favorites" />
+          <NavLink to="/user">
+            <i className="fa-regular fa-heart d-block" title="Favorites" />
+          </NavLink>
         </li>
         <li className="navbar__user-icon font-base">
           <i className="fa-regular fa-envelope d-block" title="Messages" />

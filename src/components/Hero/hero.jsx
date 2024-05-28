@@ -7,8 +7,8 @@ const Hero = () => {
     <section className="section__hero grid">
       <div className="hero__guest grid font-base">
         <div className="hero__overlay flex">
-          <h2 className="hero__title font-3 ">Encuentra tu estancia ideal</h2>
-          <p className="hero__description">
+          <h2 className="hero__title font-2">Encuentra tu estancia ideal</h2>
+          <p className="hero__description text-gray">
             Explora alojamientos adaptados a tus necesidades. Inicia tu búsqueda
             y encuentra tu hogar perfecto.
           </p>
@@ -25,13 +25,13 @@ const Hero = () => {
       </div>
       <div className="hero__host grid font-base">
         <div className="hero__overlay flex">
-          <h2 className="hero__title font-3">Renta tu casa fácilmente</h2>
-          <p className="hero__description">
+          <h2 className="hero__title font-2">Renta tu casa fácilmente</h2>
+          <p className="hero__description text-gray">
             Publica tu casa de manera sencilla y conéctate con viajeros que
             buscan lugares únicos para alojarse.
           </p>
           <ScrollLink
-            to="#guest"
+            to="#host"
             className="hero__btn  text-white uppercase fw-4 letter-spacing-2"
             spy={true}
             smooth={true}

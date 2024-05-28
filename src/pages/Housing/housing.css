@@ -8,5 +8,7 @@
 
 .housing__list {
   --gap: 0;
+  height: 100%;
   flex-direction: column;
+  overflow-y: auto;
 }

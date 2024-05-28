@@ -26,7 +26,7 @@ const Navbar = () => {
       </div>
       <ul className="navbar__user flex">
         <li className="navbar__user-icon font-base">
-          <NavLink to="/signin">
+          <NavLink to="/login">
             <i className="fa-regular fa-user d-block" title="User Account" />
           </NavLink>
         </li>

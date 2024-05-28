@@ -21,13 +21,19 @@
   align-items: center;
 }
 
-.user__category:last-child {
-  margin-top: auto;
-}
-
 .user__category:hover,
 .user__category:active {
   color: hsl(var(--clr-primary));
+}
+
+.user__category:last-child {
+  margin-top: auto;
+  padding: 0.4rem 1.4rem;
+}
+
+.user__category:last-child:hover {
+  border-bottom: 1px solid hsl(var(--clr-accent));
+  color: hsl(var(--clr-accent));
 }
 
 .user__details {

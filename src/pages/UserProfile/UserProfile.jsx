@@ -33,7 +33,7 @@ const UserProfile = () => {
             <img src={UserImg} alt="" />
           </div>
           <div>
-            <p className="user__username font-1">username123</p>
+            <p className="user__username font-2">username123</p>
             <span className="user__role font-base fw-4 text-primary">
               Anfitrion
             </span>

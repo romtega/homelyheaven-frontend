@@ -13,10 +13,9 @@ const HouseItem = () => {
         />
       </div>
       <div className="housing__info flex font-base">
-        <h2 className="font-2">Casa de la Montaña</h2>
-        <p className="housing__location font-base text-gray">
-          Valle de los Sueños, Colorado
-        </p>
+        <h2 className="font-2 fw-3">Casa de la Montaña</h2>
+        <span className="housing__location text-gray">Valle de los Sueños</span>
+        <span className="housing__location text-gray">Colorado</span>
         <div className="housing__cta flex">
           <button className="housing__btn grid">
             <i className="fa-regular fa-heart text-accent font-lg" />
@@ -51,7 +50,7 @@ const HouseItem = () => {
             3.0 <span className="font-lg">/ 5.0</span>
           </p>
           <p>
-            <span className="font-3">$105 </span>
+            <span className="font-2">$105 </span>
             <span className="text-gray">por noche</span>
           </p>
         </div>

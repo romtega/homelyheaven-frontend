@@ -1,6 +1,6 @@
 .housing__profile {
   --gap: 2rem;
-  border-bottom: 1px solid hsl(var(--clr-gray));
+  border-bottom: 1px solid hsl(var(--clr-primary));
   justify-content: flex-start;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .housing__info {
-  --gap: 0.6rem;
+  --gap: 0.4rem;
   flex-direction: column;
   margin-block: 2rem;
 }
@@ -48,7 +48,7 @@
 .housing__features {
   flex-direction: column;
   justify-content: space-between;
-  margin: 2.6rem 2rem;
+  margin: 2rem;
 }
 .housing__perks {
   --gap: 2.6rem;
@@ -61,8 +61,8 @@
 }
 
 .housing_perk i {
-  font-size: 2.4rem;
-  color: hsl(var(--clr-accent), 0.6);
+  font-size: 2rem;
+  color: hsl(var(--clr-secondary));
 }
 
 .housing_perk quote {

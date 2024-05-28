@@ -103,24 +103,6 @@ const NewUserForm = () => {
           )}
         </div>
         <div className="signin__group grid">
-          <label htmlFor="dni" className="signin__label">
-            DNI
-          </label>
-          <input
-            id="dni"
-            className="signin__input"
-            {...register("dni", {
-              required: "es necesario que ingreses tu DNI",
-            })}
-          />
-          {errors.dni && (
-            <p className="signin__error flex">
-              <i className="fa-solid fa-circle-chevron-left" />
-              {errors.dni.message}
-            </p>
-          )}
-        </div>
-        <div className="signin__group grid">
           <label htmlFor="username" className="signin__label">
             Username
           </label>

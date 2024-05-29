@@ -1,7 +1,7 @@
 .section__housing {
   margin: 0 14rem 2rem;
   height: var(--height-minus-navbar);
-  border-radius: 2rem;
+  border-radius: var(--border-radius-2);
   overflow: hidden;
   background-color: hsl(var(--clr-primary), 0.4);
 }

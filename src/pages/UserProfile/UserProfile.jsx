@@ -1,14 +1,11 @@
-/* eslint-disable quotes */
-/* eslint-disable semi */
-/* eslint-disable jsx-quotes */
-
+import UserImg from "@/assets/user.jpg";
 import "./userprofile.css";
 const UserProfile = () => {
   return (
-    <section className="user grid">
-      <aside className="user__menu flex font-lg">
+    <section className="section__user grid">
+      <aside className="user__menu flex font-lg text-gray">
         <div className="user__category flex">
-          <i className="fa-solid fa-user" /> Informacion de Usuario
+          <i className="fa-solid fa-user" /> Perfil de usuario
         </div>
         <div className="user__category flex">
           <i className="fa-solid fa-bed" />
@@ -22,39 +19,44 @@ const UserProfile = () => {
           <i className="fa-solid fa-envelope d-block" title="Messages" />
           Notificaciones
         </div>
-        <div className="user__category flex">
+        <div className="user__category flex text-accent">
           <i className="fa-solid fa-right-from-bracket" />
           Cerrar sesion
         </div>
       </aside>
-      <div className="user__info flex font-lg">
-        <div className="info__summary flex">
-          <div className="info__img">
-            <img src="#" alt="" />
+      <div className="user__details flex font-lg">
+        <button className="user__edit-icon">
+          <i className="fa-regular fa-pen-to-square" />
+        </button>
+        <div className="user__header flex">
+          <div className="user__img-wrapper grid">
+            <img src={UserImg} alt="" />
           </div>
           <div>
-            <p className="info__text">username123</p>
-            <span className="font-sm">Host</span>
+            <p className="user__username font-2">username123</p>
+            <span className="user__role font-base fw-4 text-primary">
+              Anfitrion
+            </span>
           </div>
         </div>
-        <div className="info__contact flex">
-          <div className="info__text">
-            <span className="font-sm">Nombre</span>
-            <p>John</p>
+        <div className="user__summary grid">
+          <div className="user__item">
+            <span className="user__label font-sm text-gray">Nombre</span>
+            <p className="user__info">John</p>
           </div>
-          <div className="info__text">
-            <span className="font-sm">Apellido</span>
-            <p>Doe</p>
+          <div className="user__item">
+            <span className="user__label font-sm text-gray">Apellido</span>
+            <p className="user__info">Doe</p>
           </div>
-        </div>
-        <div className="info__contact flex">
-          <div className="info__text">
-            <span className="font-sm">Correo electronico</span>
-            <p>emailto@emailto.com</p>
+          <div className="user__item">
+            <span className="user__label font-sm text-gray">
+              Correo electronico
+            </span>
+            <p className="user__info">emailto@emailto.com</p>
           </div>
-          <div className="info__text">
-            <span className="font-sm">Telefono</span>
-            <p>123-456-7890</p>
+          <div className="user__item">
+            <span className="user__label font-sm text-gray">Telefono</span>
+            <p className="user__info">123-456-7890</p>
           </div>
         </div>
       </div>

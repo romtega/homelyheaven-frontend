@@ -132,7 +132,7 @@ textarea:not([rows]) {
   --clr-gray: 0, 0%, 32%;
   --clr-white: 0, 0%, 100%;
   --clr-primary: 151, 17%, 51%;
-  --clr-secondary: 47, 100%, 61%;
+  --clr-secondary: 212, 34%, 46%;
   --clr-accent: 0, 94%, 65%;
 
   --height-minus-navbar: calc(100vh - 7.4rem);

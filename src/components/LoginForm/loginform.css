@@ -1,0 +1,10 @@
+.login__newuser {
+  margin-top: 2rem;
+  text-align: end;
+}
+
+.login__newuser:hover,
+.login__newuser:active {
+  text-decoration: underline;
+  font-weight: 500;
+}

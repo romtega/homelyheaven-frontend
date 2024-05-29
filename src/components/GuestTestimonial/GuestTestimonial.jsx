@@ -1,29 +1,23 @@
-/* eslint-disable jsx-quotes */
-/* eslint-disable quotes */
-/* eslint-disable space-before-function-paren */
-/* eslint-disable semi */
 import "./guesttestimonial.css";
-import guestImg from "@/assets/hero-guest.jpg";
+import User from "@/assets/user.jpg";
 
 const GuestTestimonial = () => {
   return (
-    <div className="housedetails__testimonial">
-      <div className="housedetails__testimonials-header flex">
-        <div className="housedetails_testimonials-img">
-          <img src={guestImg} alt="" />
+    <div className="housedetails__testimonial flex bg-white">
+      <div className="testimonials__header flex">
+        <div className="testimonials__img-wrapper">
+          <img src={User} alt="" />
         </div>
         <div>
-          <h3 className="housedetails__testimonial-name font-lg">
-            Nombre con apellido
-          </h3>
-          <span className="housedetails__testimonial-date font-sm">
+          <h3 className="testimonials__name font-base">Nombre con apellido</h3>
+          <span className="testimonials__date font-sm text-gray">
             Fecha de reservacion
           </span>
         </div>
       </div>
-      <p className="housedetails__testimonial-description font-base">
+      <p className="testimonials__description font-sm text-gray">
         Descripcion de unos 3 renglones Lorem, ipsum dolor sit amet consectetur
-        adipisicing elit.
+        adipisicing elit. amet consectetur adipisicing elit.
       </p>
     </div>
   );

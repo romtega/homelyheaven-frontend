@@ -15,7 +15,7 @@ const RoutesIndex = () => {
       <Route path="/" element={<Home />} />
       <Route path="/housing" element={<Housing />} />
       <Route path="/user" element={<UserProfile />} />
-      <Route path="/housedetails" element={<HouseDetails />} />
+      <Route path="/housedetails/:id" element={<HouseDetails />} />
       <Route path="/#guest" element={<GuestFeatures />} />
       <Route path="/signin" element={<NewUserForm />} />
       <Route path="/#host" element={<HostFeatures />} />

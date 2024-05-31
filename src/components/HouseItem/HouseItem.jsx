@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import hostImg from "@/assets/hero-host.jpg";
 import "./houseitem.css";
 
-const HouseItem = () => {
+const HouseItem = ({ housing }) => {
   return (
     <li className="housing__profile flex">
       <div className="housing__img">
@@ -13,15 +13,16 @@ const HouseItem = () => {
         />
       </div>
       <div className="housing__info flex font-base">
-        <h2 className="font-2 fw-3">Casa de la Montaña</h2>
-        <span className="housing__location text-gray">Valle de los Sueños</span>
-        <span className="housing__location text-gray">Colorado</span>
+        <h2 className="font-1 fw-3">{housing.name}</h2>
+        <span className="housing__location text-gray">
+          {housing.address.state}, {housing.address.country}
+        </span>
         <div className="housing__cta flex">
           <button className="housing__btn grid">
             <i className="fa-regular fa-heart text-accent font-lg" />
           </button>
           <button className="housing__btn bg-primary text-white fw-4">
-            <Link to="/housedetails">Más información</Link>
+            <Link to={`/housedetails/${housing._id}`}>Más información</Link>
           </button>
         </div>
       </div>
@@ -29,28 +30,28 @@ const HouseItem = () => {
         <ul className="housing__perks grid">
           <li className="housing_perk flex">
             <i className="fa-solid fa-mountain-sun" />
-            <quote>Vista a la montaña</quote>
+            <span>{housing.type}</span>
           </li>
           <li className="housing_perk flex">
             <i className="fa-solid fa-train" />
-            <quote>Transporte público cercano</quote>
+            <span>{housing.place}</span>
           </li>
           <li className="housing_perk flex">
             <i className="fa-solid fa-shower" />
-            <quote>2 Baños</quote>
+            <span>{housing.bathrooms} baños</span>
           </li>
           <li className="housing_perk flex">
             <i className="fa-solid fa-bed" />
-            <quote>5 Personas</quote>
+            <span>{housing.bedrooms} personas</span>
           </li>
         </ul>
         <div className="housing__pricing font-sm">
           <span className="fw-3">Calificación:</span>
           <p>
-            3.0 <span className="font-lg">/ 5.0</span>
+            {housing.rating} <span className="font-lg">/ 5.0</span>
           </p>
           <p>
-            <span className="font-2">$105 </span>
+            <span className="font-2">${housing.price} </span>
             <span className="text-gray">por noche</span>
           </p>
         </div>

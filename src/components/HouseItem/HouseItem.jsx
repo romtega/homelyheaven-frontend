@@ -3,6 +3,31 @@ import hostImg from "@/assets/hero-host.jpg";
 import "./houseitem.css";
 
 const HouseItem = ({ housing }) => {
+  let typeIcon;
+  if (housing.type === "Casa") {
+    typeIcon = <i className="fa-solid fa-house" />;
+  } else if (housing.type === "Villa") {
+    typeIcon = <i className="fa-solid fa-mountain-city" />;
+  } else if (housing.type === "Apartamento") {
+    typeIcon = <i className="fa-solid fa-building" />;
+  } else if (housing.type === "Cabaña") {
+    typeIcon = <i className="fa-solid fa-mountain" />;
+  }
+
+  let placeIcon;
+  if (housing.place === "desert") {
+    placeIcon = <i className="fa-solid fa-sun" />;
+  } else if (housing.place === "beach") {
+    placeIcon = <i className="fa-solid fa-umbrella-beach" />;
+  } else if (housing.place === "city") {
+    placeIcon = <i className="fa-solid fa-city" />;
+  } else if (housing.place === "mountain") {
+    placeIcon = <i className="fa-solid fa-mountain-sun" />;
+  }
+
+  const bathroomPlural = housing.bathrooms === 1 ? "baño" : "baños";
+  const bedroomPlural = housing.bedrooms === 1 ? "persona" : "personas";
+
   return (
     <li className="housing__profile flex">
       <div className="housing__img">
@@ -27,22 +52,24 @@ const HouseItem = ({ housing }) => {
         </div>
       </div>
       <div className="housing__features flex">
-        <ul className="housing__perks grid">
+        <ul className="housing__perks grid font-base text-secondary">
           <li className="housing_perk flex">
-            <i className="fa-solid fa-mountain-sun" />
+            {typeIcon}
             <span>{housing.type}</span>
           </li>
           <li className="housing_perk flex">
-            <i className="fa-solid fa-train" />
-            <span>{housing.place}</span>
+            {placeIcon}
+            <span className="capitalize">{housing.place}</span>
           </li>
           <li className="housing_perk flex">
             <i className="fa-solid fa-shower" />
-            <span>{housing.bathrooms} baños</span>
+            {housing.bathrooms} {bathroomPlural}
           </li>
           <li className="housing_perk flex">
             <i className="fa-solid fa-bed" />
-            <span>{housing.bedrooms} personas</span>
+            <span>
+              {housing.bedrooms} {bedroomPlural}
+            </span>
           </li>
         </ul>
         <div className="housing__pricing font-sm">

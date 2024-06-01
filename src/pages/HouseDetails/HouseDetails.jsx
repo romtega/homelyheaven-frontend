@@ -31,7 +31,30 @@ const HouseDetails = () => {
   if (!house) {
     return <p>House not found</p>;
   }
+
   const position = [house.address.latitude, house.address.longitude];
+
+  let typeIcon;
+  if (house.type === "Casa") {
+    typeIcon = <i className="fa-solid fa-house" />;
+  } else if (house.type === "Villa") {
+    typeIcon = <i className="fa-solid fa-mountain-city" />;
+  } else if (house.type === "Apartamento") {
+    typeIcon = <i className="fa-solid fa-building" />;
+  } else if (house.type === "Cabaña") {
+    typeIcon = <i className="fa-solid fa-mountain" />;
+  }
+
+  let placeIcon;
+  if (house.place === "desert") {
+    placeIcon = <i className="fa-solid fa-sun" />;
+  } else if (house.place === "beach") {
+    placeIcon = <i className="fa-solid fa-umbrella-beach" />;
+  } else if (house.place === "city") {
+    placeIcon = <i className="fa-solid fa-city" />;
+  } else if (house.place === "mountain") {
+    placeIcon = <i className="fa-solid fa-mountain-sun" />;
+  }
 
   return (
     <section className="section__housedetails grid">
@@ -47,34 +70,34 @@ const HouseDetails = () => {
             </span>
           </div>
           <div className="housedetails__pricing">
-            <span className="housedetails__price font-1">
-              ${house.price} /{" "}
+            <span className="housedetails__price font-3 fw-3">
+              $ {house.price}{" "}
             </span>
             <span className="housedetails__price-detail font-sm">
               por noche
             </span>
           </div>
         </div>
-        <ul className="housedetails__perks flex">
-          <li className="housedetails__perk font-1 text-gray">
-            <i className="fa-solid fa-mountain-sun" />
+        <ul className="housedetails__perks flex text-secondary">
+          <li className="housedetails__perk font-1">
+            {typeIcon}
             <span className="housedetails__perk-description font-sm">
               {house.type}
             </span>
           </li>
-          <li className="housedetails__perk font-1 text-gray">
-            <i className="fa-solid fa-train" />
-            <span className="housedetails__perk-description font-sm">
+          <li className="housedetails__perk font-1">
+            {placeIcon}
+            <span className="housedetails__perk-description font-sm capitalize">
               {house.place}
             </span>
           </li>
-          <li className="housedetails__perk font-1 text-gray">
+          <li className="housedetails__perk font-1">
             <i className="fa-solid fa-shower" />
             <span className="housedetails__perk-description font-sm">
               {house.bathrooms} Baños
             </span>
           </li>
-          <li className="housedetails__perk font-1 text-gray">
+          <li className="housedetails__perk font-1">
             <i className="fa-solid fa-bed" />
             <span className="housedetails__perk-description font-sm">
               {house.bedrooms} Personas

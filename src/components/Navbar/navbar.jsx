@@ -1,8 +1,21 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useHousingContext } from "@/hooks/useHousingContext";
 import Logo from "@/assets/logo.jpeg";
 import "./navbar.css";
 
 const Navbar = () => {
+  const { searchTerm, setSearchTerm } = useHousingContext();
+  const navigate = useNavigate();
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    navigate("/housing");
+  };
+
   return (
     <nav className="section__navbar flex">
       <div className="navbar__logo-wrapper font-lg text-primary">
@@ -11,11 +24,13 @@ const Navbar = () => {
         </NavLink>
       </div>
       <div className="navbar__search-wrapper font-base">
-        <form className="navbar__form flex">
+        <form className="navbar__form flex" onSubmit={handleSearchSubmit}>
           <input
             className="navbar__input"
             type="text"
             placeholder="Busca un alojamiento"
+            value={searchTerm}
+            onChange={handleSearchChange}
           />
           <button type="submit" className="navbar__btn bg-primary text-white">
             <NavLink to="/housing">

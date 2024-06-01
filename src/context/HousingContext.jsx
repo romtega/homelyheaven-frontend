@@ -6,6 +6,7 @@ const HousingContext = createContext();
 function HousingProvider({ children }) {
   const [housing, setHousing] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const getHousing = () => {
     axiosInstance
@@ -24,7 +25,7 @@ function HousingProvider({ children }) {
     getHousing();
   }, []);
 
-  const dataContext = { housing, loading };
+  const dataContext = { housing, loading, searchTerm, setSearchTerm };
 
   return (
     <HousingContext.Provider value={dataContext}>

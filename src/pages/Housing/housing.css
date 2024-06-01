@@ -1,5 +1,7 @@
 .section__housing {
   margin: 0 14rem 2rem;
+  max-width: 1300px;
+  margin-inline: auto;
   height: var(--height-minus-navbar);
   border-radius: var(--border-radius-2);
   overflow: hidden;

@@ -15,13 +15,19 @@ const Housing = () => {
   return (
     <section className="section__housing">
       {loading ? (
-        <p className="font-2 grid">Loading...</p>
+        <p className="font-1">Loading...</p>
       ) : (
         <>
           <ul className="housing__list flex">
-            {searchedHouse.map((house) => (
-              <HouseItem key={house._id} housing={house} />
-            ))}
+            {searchedHouse.length === 0 ? (
+              <p className="font-1">
+                No se encontraron resultados para "{searchTerm}"
+              </p>
+            ) : (
+              searchedHouse.map((house) => (
+                <HouseItem key={house._id} housing={house} />
+              ))
+            )}
           </ul>
         </>
       )}

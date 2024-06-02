@@ -1,0 +1,51 @@
+.user__details {
+  position: relative;
+  --gap: 8rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user__header {
+  --gap: 4rem;
+  justify-content: center;
+  align-items: center;
+}
+.user__img-wrapper {
+  place-content: center;
+  aspect-ratio: 1;
+  overflow: hidden;
+  width: 15rem;
+}
+
+.user__img-wrapper img {
+  border-radius: 50vw;
+  width: 100%;
+  height: 100%;
+}
+
+.user__summary {
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+}
+
+.user__contact {
+  justify-content: space-evenly;
+}
+
+.user__edit-icon {
+  position: absolute;
+  top: 20%;
+  right: 2%;
+  border-radius: 50%;
+  padding: 1rem 1.4rem;
+  border: none;
+  cursor: pointer;
+  display: block;
+}
+
+.user__info {
+  margin-top: 1rem;
+  background-color: hsl(var(--clr-gray), 0.1);
+  border-radius: var(--border-radius-1);
+  padding: 0.4rem 2rem;
+}

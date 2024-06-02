@@ -1,65 +1,62 @@
-import UserImg from "@/assets/user.jpg";
+/* eslint-disable react/jsx-curly-newline */
+import { NavLink, Routes, Route } from "react-router-dom";
 import "./userprofile.css";
+import UserInfo from "@/components/UserInfo";
+import UserBookings from "@/components/UserBookings";
+import UserFavorites from "@/components/UserFavorites";
+import UserNotifications from "@/components/UserNotifications";
+
 const UserProfile = () => {
   return (
     <section className="section__user grid">
       <aside className="user__menu flex font-lg text-gray">
-        <div className="user__category flex">
+        <NavLink
+          to="/user"
+          end
+          className={({ isActive }) =>
+            isActive ? "user__category-active flex" : "user__category flex"
+          }
+        >
           <i className="fa-solid fa-user" /> Perfil de usuario
-        </div>
-        <div className="user__category flex">
-          <i className="fa-solid fa-bed" />
-          Reservaciones
-        </div>
-        <div className="user__category flex">
-          <i className="fa-solid fa-heart d-block" title="Favorites" />
+        </NavLink>
+        <NavLink
+          to="/user/bookings"
+          className={({ isActive }) =>
+            isActive ? "user__category-active flex" : "user__category flex"
+          }
+        >
+          <i className="fa-solid fa-bed" /> Reservaciones
+        </NavLink>
+        <NavLink
+          to="/user/favorites"
+          className={({ isActive }) =>
+            isActive ? "user__category-active flex" : "user__category flex"
+          }
+        >
+          <i className="fa-solid fa-heart d-block" title="Favorites" />{" "}
           Favoritos
-        </div>
-        <div className="user__category flex">
-          <i className="fa-solid fa-envelope d-block" title="Messages" />
+        </NavLink>
+        <NavLink
+          to="/user/notifications"
+          className={({ isActive }) =>
+            isActive ? "user__category-active flex" : "user__category flex"
+          }
+        >
+          <i className="fa-solid fa-envelope d-block" title="Messages" />{" "}
           Notificaciones
-        </div>
-        <div className="user__category flex text-accent">
-          <i className="fa-solid fa-right-from-bracket" />
-          Cerrar sesion
-        </div>
+        </NavLink>
+        <NavLink to="/" className="user__category flex text-accent">
+          <i className="fa-solid fa-right-from-bracket" /> Cerrar sesión
+        </NavLink>
       </aside>
-      <div className="user__details flex font-lg">
-        <button className="user__edit-icon">
-          <i className="fa-regular fa-pen-to-square" />
-        </button>
-        <div className="user__header flex">
-          <div className="user__img-wrapper grid">
-            <img src={UserImg} alt="" />
-          </div>
-          <div>
-            <p className="user__username font-2">username123</p>
-            <span className="user__role font-base fw-4 text-primary">
-              Anfitrion
-            </span>
-          </div>
-        </div>
-        <div className="user__summary grid">
-          <div className="user__item">
-            <span className="user__label font-sm text-gray">Nombre</span>
-            <p className="user__info">John</p>
-          </div>
-          <div className="user__item">
-            <span className="user__label font-sm text-gray">Apellido</span>
-            <p className="user__info">Doe</p>
-          </div>
-          <div className="user__item">
-            <span className="user__label font-sm text-gray">
-              Correo electronico
-            </span>
-            <p className="user__info">emailto@emailto.com</p>
-          </div>
-          <div className="user__item">
-            <span className="user__label font-sm text-gray">Telefono</span>
-            <p className="user__info">123-456-7890</p>
-          </div>
-        </div>
-      </div>
+      <main className="user__content">
+        <Routes>
+          <Route path="/" element={<UserInfo />} />
+          <Route path="bookings" element={<UserBookings />} />
+          <Route path="favorites" element={<UserFavorites />} />
+          <Route path="notifications" element={<UserNotifications />} />
+        </Routes>
+      </main>
     </section>
   );
 };

@@ -32,34 +32,32 @@ const Navbar = () => {
             value={searchTerm}
             onChange={handleSearchChange}
           />
-          <button type="submit" className="navbar__btn bg-primary text-white">
-            <NavLink to="/housing">
-              <i className="fa-solid fa-magnifying-glass" />
-            </NavLink>
-          </button>
+          <NavLink className="navbar__btn bg-primary text-white" to="/housing">
+            <i className="fa-solid fa-magnifying-glass" />
+          </NavLink>
         </form>
       </div>
       <ul className="navbar__user flex">
-        <li className="navbar__user-icon font-base">
-          <NavLink to="/login">
+        <NavLink to="/login">
+          <li className="navbar__user-icon font-base">
             <i className="fa-regular fa-user d-block" title="User Account" />
-          </NavLink>
-        </li>
-        <li className="navbar__user-icon font-base">
-          <NavLink to="/login">
+          </li>
+        </NavLink>
+        <NavLink to="/login">
+          <li className="navbar__user-icon font-base">
             <i className="fa-regular fa-heart d-block" title="Favorites" />
-          </NavLink>
-        </li>
-        <li className="navbar__user-icon font-base">
-          <NavLink to="/login">
+          </li>
+        </NavLink>
+        <NavLink to="/login">
+          <li className="navbar__user-icon font-base">
             <i className="fa-regular fa-envelope d-block" title="Messages" />
-          </NavLink>
-        </li>
-        <li className="navbar__user-icon font-base">
-          <NavLink to="/login">
+          </li>
+        </NavLink>
+        <NavLink to="/login">
+          <li className="navbar__user-icon font-base">
             <i className="fa-regular fa-bell d-block" title="Notifications" />
-          </NavLink>
-        </li>
+          </li>
+        </NavLink>
       </ul>
     </nav>
   );

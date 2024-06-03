@@ -5,7 +5,7 @@ import axiosInstance from "@/services/axiosConfig.js";
 const UserContext = createContext();
 
 function UserProvider({ children }) {
-  const [userData, setUserData] = useState([]);
+  const [userData, setUserData] = useState({});
   const [loading, setLoading] = useState(true);
 
   const fetchUserData = async () => {
@@ -16,7 +16,7 @@ function UserProvider({ children }) {
         return;
       }
 
-      const response = await axiosInstance.get("/api/v1/user", {
+      const response = await axiosInstance.get("/api/v1/users", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

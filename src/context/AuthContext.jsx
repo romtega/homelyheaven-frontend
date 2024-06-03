@@ -8,7 +8,7 @@ function AuthProvider({ children }) {
   const [userPayload, setUserPayload] = useState(null);
 
   const login = (token) => {
-    localStorage.getItem("token", token);
+    localStorage.setItem("token", token);
     const payload = jwtDecode(token);
     setIsAuth(true);
     setUserPayload(payload);

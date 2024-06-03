@@ -1,15 +1,8 @@
-import { useAuthContext } from "@/hooks/useAuthContext";
 import UserImg from "@/assets/user.jpg";
 import "./userinfo.css";
 
-const UserInfo = () => {
-  const { userPayload } = useAuthContext();
-
-  if (!userPayload) {
-    return <p>Cargando...</p>;
-  }
-
-  const { username, role, firstName, lastName, email, phone } = userPayload;
+const UserInfo = ({ user }) => {
+  const { username, role, firstName, lastName, email, phone } = user;
 
   return (
     <div className="user__details flex font-lg">

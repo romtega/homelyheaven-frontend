@@ -17,7 +17,7 @@ const LoginForm = () => {
     try {
       const response = await loginUserService(data);
       if (!response.data) {
-        throw new Error(`Error ${response.status}: ${response.statusText}`);
+        throw new Error(`Error ${response.status}: ${response.status}`);
       }
 
       const result = response.data;
@@ -25,6 +25,7 @@ const LoginForm = () => {
       if (response.status === 200) {
         login(result.token);
         navigate("/user");
+        alert("Bienvenido!");
       } else {
         console.error(result.msg);
         alert(result.msg);

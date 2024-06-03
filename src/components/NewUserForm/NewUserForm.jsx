@@ -1,4 +1,3 @@
-// src/components/NewUserForm/NewUserForm.jsx
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuthContext } from "@/hooks/useAuthContext";
@@ -6,37 +5,38 @@ import { registerUserService } from "@/services/useServices";
 import "./newuserform.css";
 
 const NewUserForm = () => {
+  const { login } = useAuthContext();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
-  const { login } = useAuthContext();
 
   const onSubmit = async (data) => {
-    console.log("Data to be sent:", data);
-
     try {
       const response = await registerUserService(data);
-
       if (!response.data) {
-        throw new Error(`Error ${response.status}: ${response.statusText}`);
+        throw new Error(`Error ${response}: ${response.status}`);
       }
 
       const result = response.data;
+      console.log("Token type:", typeof result.token);
       console.log("Response JSON:", result);
-
       if (response.status === 201) {
         login(result.token);
         navigate("/user");
+        alert("Bienvenido!");
       } else {
         console.error(result.msg);
         alert(result.msg);
       }
     } catch (error) {
-      console.error("Error en la solicitud:", error);
-      alert("Ocurrió un error, por favor intenta nuevamente.");
+      console.error(
+        "Error registering user:",
+        error.response?.data || error.message
+      );
+      alert(`Error: ${error.response?.data.msg || error.message}`);
     }
   };
 

@@ -3,6 +3,7 @@
 import { NavLink, Routes, Route } from "react-router-dom";
 import { useAuthContext } from "@/hooks/useAuthContext";
 import { useUserContext } from "@/hooks/useUserContext";
+
 import "./userprofile.css";
 import UserInfo from "@/components/UserInfo";
 import UserBookings from "@/components/UserBookings";
@@ -11,10 +12,9 @@ import UserNotifications from "@/components/UserNotifications";
 import LoginForm from "@/components/LoginForm";
 
 const UserProfile = () => {
-  const { isAuth, logout } = useAuthContext();
-  const { userData, loading } = useUserContext();
-
-  console.log(userData);
+  const { isAuth, logout, userPayload } = useAuthContext();
+  const { userData } = useUserContext();
+  const currentUser = userData.find((user) => user._id === userPayload.id);
 
   return isAuth ? (
     <section className="section__user grid">
@@ -64,7 +64,7 @@ const UserProfile = () => {
       </aside>
       <main className="user__content grid">
         <Routes>
-          <Route path="/" element={<UserInfo userData={userData} />} />
+          <Route path="/" element={<UserInfo user={currentUser} />} />
           <Route path="bookings" element={<UserBookings />} />
           <Route path="favorites" element={<UserFavorites />} />
           <Route path="notifications" element={<UserNotifications />} />

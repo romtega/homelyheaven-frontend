@@ -1,7 +1,16 @@
+import { useAuthContext } from "@/hooks/useAuthContext";
 import UserImg from "@/assets/user.jpg";
 import "./userinfo.css";
 
 const UserInfo = () => {
+  const { userPayload } = useAuthContext();
+
+  if (!userPayload) {
+    return <p>Cargando...</p>;
+  }
+
+  const { username, role, firstName, lastName, email, phone } = userPayload;
+
   return (
     <div className="user__details flex font-lg">
       <button className="user__edit-icon">
@@ -12,30 +21,28 @@ const UserInfo = () => {
           <img src={UserImg} alt="" />
         </div>
         <div>
-          <p className="user__username font-2">username123</p>
-          <span className="user__role font-base fw-4 text-primary">
-            Anfitrion
-          </span>
+          <p className="user__username font-2">{username}</p>
+          <span className="user__role font-base fw-4 text-primary">{role}</span>
         </div>
       </div>
       <div className="user__summary grid">
         <div className="user__item">
           <span className="user__label font-sm text-gray">Nombre</span>
-          <p className="user__info">John</p>
+          <p className="user__info">{firstName}</p>
         </div>
         <div className="user__item">
           <span className="user__label font-sm text-gray">Apellido</span>
-          <p className="user__info">Doe</p>
+          <p className="user__info">{lastName}</p>
         </div>
         <div className="user__item">
           <span className="user__label font-sm text-gray">
             Correo electronico
           </span>
-          <p className="user__info">emailto@emailto.com</p>
+          <p className="user__info">{email}</p>
         </div>
         <div className="user__item">
           <span className="user__label font-sm text-gray">Telefono</span>
-          <p className="user__info">123-456-7890</p>
+          <p className="user__info">{phone}</p>
         </div>
       </div>
     </div>

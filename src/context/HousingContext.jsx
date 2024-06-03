@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import axiosInstance from "@/api/axiosConfig.js";
+import axiosInstance from "@/services/axiosConfig.js";
 
 const HousingContext = createContext();
 
@@ -8,7 +8,7 @@ function HousingProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const getHousing = () => {
+  const fetchHousing = () => {
     axiosInstance
       .get("api/v1/housing")
       .then((response) => {
@@ -22,7 +22,7 @@ function HousingProvider({ children }) {
   };
 
   useEffect(() => {
-    getHousing();
+    fetchHousing();
   }, []);
 
   const dataContext = { housing, loading, searchTerm, setSearchTerm };

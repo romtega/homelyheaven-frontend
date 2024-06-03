@@ -1,13 +1,22 @@
+/* eslint-disable multiline-ternary */
 /* eslint-disable react/jsx-curly-newline */
 import { NavLink, Routes, Route } from "react-router-dom";
+import { useAuthContext } from "@/hooks/useAuthContext";
+import { useUserContext } from "@/hooks/useUserContext";
 import "./userprofile.css";
 import UserInfo from "@/components/UserInfo";
 import UserBookings from "@/components/UserBookings";
 import UserFavorites from "@/components/UserFavorites";
 import UserNotifications from "@/components/UserNotifications";
+import LoginForm from "@/components/LoginForm";
 
 const UserProfile = () => {
-  return (
+  const { isAuth, logout } = useAuthContext();
+  const { userData, loading } = useUserContext();
+
+  console.log(userData);
+
+  return isAuth ? (
     <section className="section__user grid">
       <aside className="user__menu flex font-lg text-gray">
         <NavLink
@@ -33,7 +42,7 @@ const UserProfile = () => {
             isActive ? "user__category-active flex" : "user__category flex"
           }
         >
-          <i className="fa-solid fa-heart d-block" title="Favorites" />{" "}
+          <i className="fa-solid fa-heart d-block" title="Favorites" />
           Favoritos
         </NavLink>
         <NavLink
@@ -42,22 +51,28 @@ const UserProfile = () => {
             isActive ? "user__category-active flex" : "user__category flex"
           }
         >
-          <i className="fa-solid fa-envelope d-block" title="Messages" />{" "}
+          <i className="fa-solid fa-envelope d-block" title="Messages" />
           Notificaciones
         </NavLink>
-        <NavLink to="/" className="user__category flex text-accent">
+        <NavLink
+          to="/"
+          onClick={logout}
+          className="user__category flex text-accent"
+        >
           <i className="fa-solid fa-right-from-bracket" /> Cerrar sesión
         </NavLink>
       </aside>
-      <main className="user__content">
+      <main className="user__content grid">
         <Routes>
-          <Route path="/" element={<UserInfo />} />
+          <Route path="/" element={<UserInfo userData={userData} />} />
           <Route path="bookings" element={<UserBookings />} />
           <Route path="favorites" element={<UserFavorites />} />
           <Route path="notifications" element={<UserNotifications />} />
         </Routes>
       </main>
     </section>
+  ) : (
+    <LoginForm />
   );
 };
 

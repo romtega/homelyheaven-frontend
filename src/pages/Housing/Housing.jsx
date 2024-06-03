@@ -1,3 +1,4 @@
+/* eslint-disable multiline-ternary */
 import ChevronBtn from "@/components/ChevronBtn";
 import HouseItem from "@/components/HouseItem";
 import "./housing.css";

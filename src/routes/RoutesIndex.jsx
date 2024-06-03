@@ -1,4 +1,6 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
+import { useAuthContext } from "@/hooks/useAuthContext";
+
 import Home from "@/pages/Home/Home";
 import Housing from "@/pages/Housing";
 import UserProfile from "@/pages/UserProfile";
@@ -10,12 +12,19 @@ import NewUserForm from "@/components/NewUserForm";
 import LoginForm from "@/components/LoginForm/LoginForm";
 
 const RoutesIndex = () => {
+  const { isAuth } = useAuthContext();
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/housing" element={<Housing />} />
-      <Route path="/user/*" element={<UserProfile />} />
-      <Route path="/housedetails/:id" element={<HouseDetails />} />
+      <Route
+        path="/user/*"
+        element={isAuth ? <UserProfile /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/housedetails/:id"
+        element={isAuth ? <HouseDetails /> : <Navigate to="/login" />}
+      />
       <Route path="/#guest" element={<GuestFeatures />} />
       <Route path="/signin" element={<NewUserForm />} />
       <Route path="/#host" element={<HostFeatures />} />

@@ -50,6 +50,7 @@
 }
 .navbar__user-icon {
   background-color: hsl(var(--clr-primary), 0.2);
+  color: hsl(var(--clr-primary));
   border-radius: 50vw;
   padding: 1.2rem;
   transition: all 0.3s ease-in-out;
@@ -60,5 +61,4 @@
 .navbar__user-icon:active {
   outline: 1px solid hsl(var(--clr-primary));
   transform: scale(1.2);
-  color: hsl(var(--clr-primary));
 }

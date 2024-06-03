@@ -1,6 +1,8 @@
-/* eslint-disable comma-dangle */
+// src/components/NewUserForm/NewUserForm.jsx
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { useAuthContext } from "@/hooks/useAuthContext";
+import { registerUserService } from "@/services/useServices";
 import "./newuserform.css";
 
 const NewUserForm = () => {
@@ -9,9 +11,33 @@ const NewUserForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
+  const { login } = useAuthContext();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    console.log("Data to be sent:", data);
+
+    try {
+      const response = await registerUserService(data);
+
+      if (!response.data) {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+
+      const result = response.data;
+      console.log("Response JSON:", result);
+
+      if (response.status === 201) {
+        login(result.token);
+        navigate("/user");
+      } else {
+        console.error(result.msg);
+        alert(result.msg);
+      }
+    } catch (error) {
+      console.error("Error en la solicitud:", error);
+      alert("Ocurrió un error, por favor intenta nuevamente.");
+    }
   };
 
   return (
@@ -19,6 +45,7 @@ const NewUserForm = () => {
       <form
         className="signin__form flex font-base"
         onSubmit={handleSubmit(onSubmit)}
+        noValidate
       >
         <h2 className="signin__title font-2">Registrate</h2>
         <div className="signin__group grid">
@@ -160,8 +187,11 @@ const NewUserForm = () => {
           )}
         </div>
         <button type="submit" className="signin__btn text-white uppercase fw-4">
-          <Link to="/user">Crear cuenta</Link>
+          Crear cuenta
         </button>
+        <Link to="/login" className="login__newuser text-secondary fw-2">
+          ¿Ya tienes cuenta?
+        </Link>
       </form>
     </section>
   );

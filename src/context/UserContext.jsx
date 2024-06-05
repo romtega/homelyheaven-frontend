@@ -1,29 +1,18 @@
 /* eslint-disable comma-dangle */
 import { createContext, useState, useEffect } from "react";
-import axiosInstance from "@/services/axiosConfig.js";
+import { getUserService } from "@/services/useServices";
 
 const UserContext = createContext();
 
-function UserProvider({ children }) {
+function UserProvider ({ children }) {
   const [userData, setUserData] = useState({});
   const [loading, setLoading] = useState(true);
 
   const fetchUserData = async () => {
     try {
-      const token = localStorage.getItem("token");
-      console.log(token); //para prueba
-      if (!token) {
-        setLoading(false);
-        return;
-      }
-
-      const response = await axiosInstance.get("/api/v1/users", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
+      const response = await getUserService();
       setUserData(response.data);
+      console.log(userData);
     } catch (error) {
       console.error("Error al cargar datos del usuario", error);
     } finally {

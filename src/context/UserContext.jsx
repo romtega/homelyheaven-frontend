@@ -10,7 +10,7 @@ function UserProvider({ children }) {
   const fetchUserData = async () => {
     try {
       const response = await getUserService();
-      console.log("Response:", response); // para el test
+      console.log("Response from getUserService:", response); // Respuesta
       setUserData(response.data);
     } catch (error) {
       console.error("Error al cargar datos del usuario:", error.response || error);

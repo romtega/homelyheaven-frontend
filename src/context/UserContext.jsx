@@ -11,6 +11,7 @@ function UserProvider({ children }) {
   const fetchUserData = async () => {
     try {
       const token = localStorage.getItem("token");
+      console.log(token); //para prueba
       if (!token) {
         setLoading(false);
         return;

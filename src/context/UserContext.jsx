@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { getUserService } from "@/services/userService";
+import { getUserService } from "@/services/useServices";
 
 const UserContext = createContext();
 

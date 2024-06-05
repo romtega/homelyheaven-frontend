@@ -8,7 +8,7 @@ function UserProvider({ children }) {
   const [userData, setUserData] = useState({});
   const [loading, setLoading] = useState(true);
   const { isAuth } = useAuthContext();
-  console.log( 'IsAuth: ' + isAuth);
+  console.log("IsAuth: " + isAuth);
 
   const fetchUserData = async () => {
     const token = localStorage.getItem("token");
@@ -24,7 +24,10 @@ function UserProvider({ children }) {
       console.log("Response from getUserService:", response); // Verify response
       setUserData(response.data);
     } catch (error) {
-      console.error("Error al cargar datos del usuario:", error.response || error);
+      console.error(
+        "Error al cargar datos del usuario:",
+        error.response || error
+      );
     } finally {
       setLoading(false);
     }
@@ -32,11 +35,7 @@ function UserProvider({ children }) {
 
   useEffect(() => {
     if (isAuth) {
-      const delay = 1000;
-      const timeoutId = setTimeout(() => {
-        fetchUserData();
-      }, delay);
-      return () => clearTimeout(timeoutId);
+      fetchUserData();
     }
   }, [isAuth]);
 

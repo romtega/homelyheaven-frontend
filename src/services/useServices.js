@@ -10,10 +10,8 @@ const loginUserService = async (data) => {
     const { token } = response.data;
     if (token) {
       localStorage.setItem("token", token);
-      console.log("Token set in localStorage:", token);
-      // Revisar instalación del token
       const storedToken = localStorage.getItem("token");
-      console.log("Immediate retrieved token:", storedToken); // Verificación
+      console.log("Immediate retrieved token:", storedToken); // Sent token
     }
     return response;
   } catch (error) {
@@ -24,9 +22,9 @@ const loginUserService = async (data) => {
 
 const getUserService = () => {
   const token = localStorage.getItem("token");
-  console.log("Retrieved Token:", token); // Retomar el token
+  console.log("Retrieved Token in getUserService:", token); // Recieved token
   if (!token) {
-    console.error("Token not found");
+    console.error("Token not found in getUserService");
     return Promise.reject("Token not found");
   }
 

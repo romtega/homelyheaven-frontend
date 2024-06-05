@@ -118,7 +118,7 @@ const HouseDetails = () => {
             </div>
           </div>
           <div className="housedetails__map-wrapper">
-            {/* <MapContainer
+            <MapContainer
               center={position}
               zoom={13}
               style={{ height: "400px", width: "100%" }}
@@ -130,8 +130,8 @@ const HouseDetails = () => {
               <Marker position={position}>
                 <Popup>{house.name}</Popup>
               </Marker>
-            </MapContainer> */}
-            <img src={Map} alt="" />
+            </MapContainer>
+            {/* <img src={Map} alt="" />  */}
           </div>
         </div>
       </div>

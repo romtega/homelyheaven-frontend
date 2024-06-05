@@ -23,7 +23,11 @@ const RoutesIndex = () => {
       />
       <Route
         path="/housedetails/:id"
+<<<<<<< HEAD
         element={isAuth ? <HouseDetails /> : <Navigate to="/login" />}
+=======
+        element={<HouseDetails />}
+>>>>>>> 08dbdfc (house details map test01)
       />
       <Route path="/#guest" element={<GuestFeatures />} />
       <Route path="/signin" element={<NewUserForm />} />

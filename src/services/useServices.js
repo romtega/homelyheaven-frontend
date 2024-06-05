@@ -6,6 +6,7 @@ const registerUserService = (data) => {
 
 const loginUserService = async (data) => {
   const response = await axiosInstance.post("api/v1/login", data);
+  console.log(response.data)
   const { token } = response.data;
   if (token) {
     localStorage.setItem("token", token);

@@ -8,4 +8,17 @@ const loginUserService = (data) => {
   return axiosInstance.post("api/v1/login", data);
 };
 
-export { registerUserService, loginUserService };
+const getUserService = () => {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    return Promise.reject("Token not found");
+  }
+
+  return axiosInstance.get("/api/v1/users", {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+};
+
+export { registerUserService, loginUserService, getUserService };

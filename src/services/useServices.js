@@ -5,18 +5,23 @@ const registerUserService = (data) => {
 };
 
 const loginUserService = async (data) => {
-  const response = await axiosInstance.post("api/v1/login", data);
-  console.log(response.data)
-  const { token } = response.data;
-  if (token) {
-    localStorage.setItem("token", token);
+  try {
+    const response = await axiosInstance.post("/api/v1/login", data);
+    const { token } = response.data;
+    if (token) {
+      localStorage.setItem("token", token);
+      console.log("Token set in localStorage:", token); // Log the token set
+    }
+    return response;
+  } catch (error) {
+    console.error("Error during login:", error);
+    throw error;
   }
-  return response;
 };
 
 const getUserService = () => {
   const token = localStorage.getItem("token");
-  console.log("Retrieved Token:", token); // token x2 para test
+  console.log("Retrieved Token:", token); // Log the token retrieved
   if (!token) {
     console.error("Token not found");
     return Promise.reject("Token not found");
@@ -24,8 +29,8 @@ const getUserService = () => {
 
   return axiosInstance.get("/api/v1/users", {
     headers: {
-      Authorization: `Bearer ${token}`
-    }
+      Authorization: `Bearer ${token}`,
+    },
   });
 };
 

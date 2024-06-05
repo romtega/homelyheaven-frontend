@@ -21,18 +21,7 @@ const RoutesIndex = () => {
         path="/user/*"
         element={isAuth ? <UserProfile /> : <Navigate to="/login" />}
       />
-      <Route
-        path="/housedetails/:id"
-<<<<<<< HEAD
-<<<<<<< HEAD
-        element={isAuth ? <HouseDetails /> : <Navigate to="/login" />}
-=======
-        element={<HouseDetails />}
->>>>>>> 08dbdfc (house details map test01)
-=======
-        element={ <HouseDetails />}
->>>>>>> e322f9f (routes test02)
-      />
+      <Route path="/housedetails/:id" element={<HouseDetails />} />
       <Route path="/#guest" element={<GuestFeatures />} />
       <Route path="/signin" element={<NewUserForm />} />
       <Route path="/#host" element={<HostFeatures />} />

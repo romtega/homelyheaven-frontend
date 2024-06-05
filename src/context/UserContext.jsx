@@ -1,11 +1,14 @@
 import { createContext, useState, useEffect } from "react";
 import { getUserService } from "@/services/useServices";
+import { useAuthContext } from "@/hooks/useAuthContext";
 
 const UserContext = createContext();
 
 function UserProvider({ children }) {
   const [userData, setUserData] = useState({});
   const [loading, setLoading] = useState(true);
+  const { isAuth } = useAuthContext();
+  console.log( 'IsAuth: ' + isAuth);
 
   const fetchUserData = async () => {
     const token = localStorage.getItem("token");
@@ -28,12 +31,14 @@ function UserProvider({ children }) {
   };
 
   useEffect(() => {
-    const delay = 1000;
-    const timeoutId = setTimeout(() => {
-      fetchUserData();
-    }, delay);
-    return () => clearTimeout(timeoutId); 
-  }, []);
+    if (isAuth) {
+      const delay = 1000;
+      const timeoutId = setTimeout(() => {
+        fetchUserData();
+      }, delay);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [isAuth]);
 
   const dataContext = { userData, loading };
   return (

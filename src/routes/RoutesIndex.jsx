@@ -6,8 +6,8 @@ import Housing from "@/pages/Housing";
 import UserProfile from "@/pages/UserProfile";
 import HouseDetails from "@/pages/HouseDetails";
 
-import GuestFeatures from "@/components/GuestFeatures";
-import HostFeatures from "@/components/HostFeatures/HostFeatures";
+//  import GuestFeatures from "@/components/GuestFeatures";
+//  import HostFeatures from "@/components/HostFeatures/HostFeatures";
 import NewUserForm from "@/components/NewUserForm";
 import LoginForm from "@/components/LoginForm/LoginForm";
 
@@ -25,9 +25,9 @@ const RoutesIndex = () => {
         path="/housedetails/:id"
         element={isAuth ? <HouseDetails /> : <Navigate to="/login" />}
       />
-      <Route path="/#guest" element={<GuestFeatures />} />
+      {/* <Route path="/#guest" element={<GuestFeatures />} /> */}
       <Route path="/signin" element={<NewUserForm />} />
-      <Route path="/#host" element={<HostFeatures />} />
+      {/* <Route path="/#host" element={<HostFeatures />} /> */}
       <Route path="/login" element={<LoginForm />} />
     </Routes>
   );

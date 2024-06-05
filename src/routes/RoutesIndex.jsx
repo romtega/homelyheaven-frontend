@@ -25,10 +25,11 @@ const RoutesIndex = () => {
         path="/housedetails/:id"
         element={isAuth ? <HouseDetails /> : <Navigate to="/login" />}
       />
-      {/* <Route path="/#guest" element={<GuestFeatures />} /> */}
       <Route path="/signin" element={<NewUserForm />} />
-      {/* <Route path="/#host" element={<HostFeatures />} /> */}
       <Route path="/login" element={<LoginForm />} />
+      <Route path="*" element={<Navigate to="/" />} />
+      {/* <Route path="/#guest" element={<GuestFeatures />} /> */}
+      {/* <Route path="/#host" element={<HostFeatures />} /> */}
     </Routes>
   );
 };

@@ -28,7 +28,11 @@ function UserProvider({ children }) {
   };
 
   useEffect(() => {
-    fetchUserData();
+    const delay = 1000;
+    const timeoutId = setTimeout(() => {
+      fetchUserData();
+    }, delay);
+    return () => clearTimeout(timeoutId); 
   }, []);
 
   const dataContext = { userData, loading };

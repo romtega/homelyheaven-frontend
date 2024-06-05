@@ -1,13 +1,13 @@
 import { createContext, useState, useEffect } from "react";
 import { getUserService } from "@/services/useServices";
-import { useAuthContext } from "@/hooks/useAuthContext";
+import { AuthProvider } from "@/context/AuthContext";
 
 const UserContext = createContext();
 
 function UserProvider({ children }) {
   const [userData, setUserData] = useState({});
   const [loading, setLoading] = useState(true);
-  const { isAuth } = useAuthContext();
+  const { isAuth } = AuthProvider();
   console.log("IsAuth: " + isAuth);
 
   const fetchUserData = async () => {

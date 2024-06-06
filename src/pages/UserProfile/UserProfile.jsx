@@ -15,16 +15,17 @@ const UserProfile = () => {
   const { isAuth, logout, userPayload } = useAuthContext();
   const { userData } = useUserContext();
   const navigate = useNavigate();
-  console.log(userData);
   const currentUser = userData
     ? userData.find((user) => user._id === userPayload.id)
     : null;
+
+  console.log('current user: ' + userData);
 
   if (!isAuth) {
     return <LoginForm />;
   }
 
-  if (!currentUser) {
+  if (!Object.keys(currentUser).length) {
     return (
       <div>
         <p>

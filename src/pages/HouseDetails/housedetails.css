@@ -14,11 +14,22 @@
 
 .housedetails__img-wrapper {
   border-radius: 1rem;
-  overflow: hidden;
-}
-.housedetails__img {
   width: 100%;
-  height: 320px;
+  max-height: 320px;
+  overflow: hidden;
+  position: relative;
+}
+
+.housedetails__img-content {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel .slide img {
+  max-height: 320px;
+  width: 100%;
   object-fit: cover;
 }
 
@@ -66,6 +77,7 @@
 
 .housedetails__map-wrapper {
   overflow: hidden;
+  border-radius: var(--border-radius-1);
 }
 
 .housedetails__map-wrapper img {

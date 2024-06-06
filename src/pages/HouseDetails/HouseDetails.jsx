@@ -1,4 +1,3 @@
-// HouseDetails.jsx
 import { useParams } from "react-router-dom";
 import { useHousingContext } from "@/hooks/useHousingContext";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
@@ -6,7 +5,8 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import GuestTestimonial from "@/components/GuestTestimonial";
 import guestImg from "@/assets/hero-guest.jpg";
-import Map from "@/assets/map.png";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // Importar estilos del carrusel
+import { Carousel } from "react-responsive-carousel";
 import "./housedetails.css";
 
 delete L.Icon.Default.prototype._getIconUrl;
@@ -46,21 +46,48 @@ const HouseDetails = () => {
   }
 
   let placeIcon;
-  if (house.place === "desert") {
+  if (house.place === "desierto") {
     placeIcon = <i className="fa-solid fa-sun" />;
-  } else if (house.place === "beach") {
+  } else if (house.place === "playa") {
     placeIcon = <i className="fa-solid fa-umbrella-beach" />;
-  } else if (house.place === "city") {
+  } else if (house.place === "ciudad") {
     placeIcon = <i className="fa-solid fa-city" />;
-  } else if (house.place === "mountain") {
+  } else if (house.place === "montaña") {
     placeIcon = <i className="fa-solid fa-mountain-sun" />;
+  } else if (house.place === "villa") {
+    placeIcon = <i className="fa-solid fa-mountain" />;
   }
+
+  const renderImages = () => {
+    if (house.imgUrl.length === 0) {
+      return (
+        <div>
+          <img
+            src={guestImg}
+            alt="Imagen de sitio"
+            className="housedetails__img-content"
+          />
+        </div>
+      );
+    }
+    return house.imgUrl.map((url, index) => (
+      <div key={index}>
+        <img
+          src={url}
+          alt={`Imagen de sitio ${index + 1}`}
+          className="housedetails__img-content"
+        />
+      </div>
+    ));
+  };
 
   return (
     <section className="section__housedetails grid">
       <div className="housedetails__info flex">
         <div className="housedetails__img-wrapper">
-          <img src={guestImg} alt="Hotel" className="housedetails__img" />
+          <Carousel showThumbs={false} dynamicHeight={true} infiniteLoop={true}>
+            {renderImages()}
+          </Carousel>
         </div>
         <div className="housedetails__header flex">
           <div className="housedetails__location">
@@ -118,10 +145,10 @@ const HouseDetails = () => {
             </div>
           </div>
           <div className="housedetails__map-wrapper">
-            {/* <MapContainer
+            <MapContainer
               center={position}
-              zoom={13}
-              style={{ height: "400px", width: "100%" }}
+              zoom={10}
+              style={{ height: "200px", width: "100%" }}
             >
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -130,8 +157,7 @@ const HouseDetails = () => {
               <Marker position={position}>
                 <Popup>{house.name}</Popup>
               </Marker>
-            </MapContainer> */}
-            <img src={Map} alt="" />
+            </MapContainer>
           </div>
         </div>
       </div>

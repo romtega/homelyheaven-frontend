@@ -5,17 +5,20 @@ import Footer from "@/components/Footer";
 import { HousingProvider } from "@/context/HousingContext";
 import { AuthProvider } from "@/context/AuthContext";
 import { UserProvider } from "@/context/UserContext";
+import { ReviewsProvider } from "@/context/ReviewsContext";
 
 const App = () => {
   return (
     <AuthProvider>
       <UserProvider>
         <HousingProvider>
-          <BrowserRouter>
-            <Navbar />
-            <RoutesIndex />
-            <Footer />
-          </BrowserRouter>
+          <ReviewsProvider>
+            <BrowserRouter>
+              <Navbar />
+              <RoutesIndex />
+              <Footer />
+            </BrowserRouter>
+          </ReviewsProvider>
         </HousingProvider>
       </UserProvider>
     </AuthProvider>

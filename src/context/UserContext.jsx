@@ -4,7 +4,7 @@ import { useAuthContext } from "@/hooks/useAuthContext";
 
 const UserContext = createContext();
 
-function UserProvider({ children }) {
+function UserProvider ({ children }) {
   const [userData, setUserData] = useState({});
   const [loading, setLoading] = useState(true);
   const { isAuth } = useAuthContext();

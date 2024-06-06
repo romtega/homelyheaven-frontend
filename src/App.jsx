@@ -8,8 +8,8 @@ import { UserProvider } from "@/context/UserContext";
 
 const App = () => {
   return (
-    <UserProvider>
-      <AuthProvider>
+    <AuthProvider>
+      <UserProvider>
         <HousingProvider>
           <BrowserRouter>
             <Navbar />
@@ -17,8 +17,8 @@ const App = () => {
             <Footer />
           </BrowserRouter>
         </HousingProvider>
-      </AuthProvider>
-    </UserProvider>
+      </UserProvider>
+    </AuthProvider>
   );
 };
 

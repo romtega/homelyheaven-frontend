@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
-import { useAuthContext } from "@/hooks/useAuthContext";
+//  import { useAuthContext } from "@/hooks/useAuthContext";
 import { registerUserService } from "@/services/useServices";
 import "./newuserform.css";
 
 const NewUserForm = () => {
-  const { login } = useAuthContext();
+  //  const { login } = useAuthContext();
   const {
     register,
     handleSubmit,
@@ -20,17 +20,18 @@ const NewUserForm = () => {
         throw new Error(`Error ${response}: ${response.status}`);
       }
 
-      const result = response.data;
+      //  const result = response.data;
       //  console.log("Token type:", typeof result.token);
-      //  console.log("Response JSON:", result);
-      if (response.status === 201) {
+      console.log("Response JSON:", response.data);
+      navigate("/login")
+    /*   if (response.status === 201) {
         login(result.token);
         navigate("/user");
         alert("Bienvenido!");
       } else {
         console.error(result.msg);
         alert(result.msg);
-      }
+      } */
     } catch (error) {
       console.error(
         "Error registering user:",

@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
-//import { useAuthContext } from "@/hooks/useAuthContext";
+//  import { useAuthContext } from "@/hooks/useAuthContext";
 import { registerUserService } from "@/services/useServices";
 import "./newuserform.css";
 
 const NewUserForm = () => {
-  //const { login } = useAuthContext();
+  //  const { login } = useAuthContext();
   const {
     register,
     handleSubmit,
@@ -23,7 +23,7 @@ const NewUserForm = () => {
       //  const result = response.data;
       //  console.log("Token type:", typeof result.token);
       console.log("Response JSON:", response.data);
-      navigate()
+      navigate("/login")
     /*   if (response.status === 201) {
         login(result.token);
         navigate("/user");

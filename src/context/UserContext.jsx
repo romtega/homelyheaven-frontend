@@ -12,9 +12,8 @@ function UserProvider ({ children }) {
 
   const fetchUserData = async () => {
     const token = localStorage.getItem("token");
-    console.log("Retrieved Token in fetchUserData:", token); // Log token
     if (!token) {
-      console.error("Token not found in fetchUserData");
+      console.error("Token not found in localstorage while fetchingData");
       setLoading(false);
       return;
     }
@@ -35,6 +34,8 @@ function UserProvider ({ children }) {
 
   useEffect(() => {
     if (isAuth) {
+      const token = localStorage.getItem("token");
+      console.log("Retrieved Token after isAuth:", token); // Log token
       fetchUserData();
     }
   }, [isAuth]);

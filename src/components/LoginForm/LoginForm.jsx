@@ -21,7 +21,7 @@ const LoginForm = () => {
       }
 
       const result = response.data;
-      console.log("Response JSON:", result);
+      //  console.log("Response JSON:", result);
       if (response.status === 200) {
         login(result.token);
         navigate("/user");

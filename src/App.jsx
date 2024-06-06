@@ -9,8 +9,8 @@ import { ReviewsProvider } from "@/context/ReviewsContext";
 
 const App = () => {
   return (
-    <UserProvider>
-      <AuthProvider>
+    <AuthProvider>
+      <UserProvider>
         <HousingProvider>
           <ReviewsProvider>
             <BrowserRouter>
@@ -20,8 +20,8 @@ const App = () => {
             </BrowserRouter>
           </ReviewsProvider>
         </HousingProvider>
-      </AuthProvider>
-    </UserProvider>
+      </UserProvider>
+    </AuthProvider>
   );
 };
 

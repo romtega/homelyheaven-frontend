@@ -21,8 +21,8 @@ const NewUserForm = () => {
       }
 
       const result = response.data;
-      console.log("Token type:", typeof result.token);
-      console.log("Response JSON:", result);
+      //  console.log("Token type:", typeof result.token);
+      //  console.log("Response JSON:", result);
       if (response.status === 201) {
         login(result.token);
         navigate("/user");

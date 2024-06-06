@@ -1,6 +1,6 @@
 /* eslint-disable multiline-ternary */
 /* eslint-disable react/jsx-curly-newline */
-import { NavLink, Routes, Route } from "react-router-dom";
+import { NavLink, Routes, Route, useNavigate } from "react-router-dom";
 import { useAuthContext } from "@/hooks/useAuthContext";
 import { useUserContext } from "@/hooks/useUserContext";
 
@@ -14,9 +14,31 @@ import LoginForm from "@/components/LoginForm";
 const UserProfile = () => {
   const { isAuth, logout, userPayload } = useAuthContext();
   const { userData } = useUserContext();
-  const currentUser = userData.find((user) => user._id === userPayload.id);
+  const navigate = useNavigate();
+  console.log(userData);
+  const currentUser = userData
+    ? userData.find((user) => user._id === userPayload.id)
+    : null;
 
-  return isAuth ? (
+  if (!isAuth) {
+    return <LoginForm />;
+  }
+
+  if (!currentUser) {
+    return (
+      <div>
+        <p>
+          Error al cargar los datos del usuario. Por favor, inténtelo
+          nuevamente.
+        </p>
+        <button onClick={() => navigate("/login")}>
+          Ir a la página de inicio de sesión
+        </button>
+      </div>
+    );
+  }
+
+  return (
     <section className="section__user grid">
       <aside className="user__menu flex font-lg text-gray">
         <NavLink
@@ -71,8 +93,6 @@ const UserProfile = () => {
         </Routes>
       </main>
     </section>
-  ) : (
-    <LoginForm />
   );
 };
 

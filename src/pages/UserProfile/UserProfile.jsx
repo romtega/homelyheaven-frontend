@@ -25,16 +25,11 @@ const UserProfile = () => {
     return <LoginForm />;
   }
 
-  if (!Object.keys(currentUser).length) {
+  if (!currentUser || Object.keys(currentUser).length === 0) {
     return (
       <div>
-        <p>
-          Error al cargar los datos del usuario. Por favor, inténtelo
-          nuevamente.
-        </p>
-        <button onClick={() => navigate("/login")}>
-          Ir a la página de inicio de sesión
-        </button>
+        <p>Error al cargar los datos del usuario. Por favor, inténtelo nuevamente.</p>
+        <button onClick={() => navigate("/login")}>Ir a la página de inicio de sesión</button>
       </div>
     );
   }

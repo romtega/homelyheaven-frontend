@@ -1,9 +1,7 @@
 import UserImg from "@/assets/user.jpg";
 import "./userinfo.css";
 
-const UserInfo = ({ user }) => {
-  const { username, role, firstName, lastName, email, phone } = user;
-
+const UserInfo = () => {
   return (
     <div className="user__details flex font-lg">
       <button className="user__edit-icon">
@@ -11,31 +9,31 @@ const UserInfo = ({ user }) => {
       </button>
       <div className="user__header flex">
         <div className="user__img-wrapper grid">
-          <img src={UserImg} alt="" />
+          <img src="" alt="" />
         </div>
         <div>
-          <p className="user__username font-2">{username}</p>
-          <span className="user__role font-base fw-4 text-primary">{role}</span>
+          <p className="user__username font-2" />
+          <span className="user__role font-base fw-4 text-primary" />
         </div>
       </div>
       <div className="user__summary grid">
         <div className="user__item">
           <span className="user__label font-sm text-gray">Nombre</span>
-          <p className="user__info">{firstName}</p>
+          <p className="user__info" />
         </div>
         <div className="user__item">
           <span className="user__label font-sm text-gray">Apellido</span>
-          <p className="user__info">{lastName}</p>
+          <p className="user__info" />
         </div>
         <div className="user__item">
           <span className="user__label font-sm text-gray">
             Correo electronico
           </span>
-          <p className="user__info">{email}</p>
+          <p className="user__info" />
         </div>
         <div className="user__item">
           <span className="user__label font-sm text-gray">Telefono</span>
-          <p className="user__info">{phone}</p>
+          <p className="user__info" />
         </div>
       </div>
     </div>

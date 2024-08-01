@@ -1,53 +1,17 @@
 import { useForm } from "react-hook-form";
-import { useNavigate, Link } from "react-router-dom";
-//  import { useAuthContext } from "@/hooks/useAuthContext";
-import { registerUserService } from "@/services/useServices";
+
 import "./newuserform.css";
 
 const NewUserForm = () => {
-  //  const { login } = useAuthContext();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const navigate = useNavigate();
-
-  const onSubmit = async (data) => {
-    try {
-      const response = await registerUserService(data);
-      if (!response.data) {
-        throw new Error(`Error ${response}: ${response.status}`);
-      }
-
-      //  const result = response.data;
-      //  console.log("Token type:", typeof result.token);
-      console.log("Response JSON:", response.data);
-      navigate("/login")
-    /*   if (response.status === 201) {
-        login(result.token);
-        navigate("/user");
-        alert("Bienvenido!");
-      } else {
-        console.error(result.msg);
-        alert(result.msg);
-      } */
-    } catch (error) {
-      console.error(
-        "Error registering user:",
-        error.response?.data || error.message
-      );
-      alert(`Error: ${error.response?.data.msg || error.message}`);
-    }
-  };
 
   return (
     <section className="section__signin grid">
-      <form
-        className="signin__form flex font-base"
-        onSubmit={handleSubmit(onSubmit)}
-        noValidate
-      >
+      <form className="signin__form flex font-base" noValidate>
         <h2 className="signin__title font-2">Registrate</h2>
         <div className="signin__group grid">
           <label htmlFor="firstName" className="signin__label">

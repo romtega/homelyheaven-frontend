@@ -1,46 +1,18 @@
-import { useForm } from "react-hook-form";
-import { useNavigate, Link } from "react-router-dom";
-import { loginUserService } from "@/services/useServices";
-import { useAuthContext } from "@/hooks/useAuthContext";
 import "./loginform.css";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
-  const { login } = useAuthContext();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const navigate = useNavigate();
-
-  const onSubmit = async (data) => {
-    try {
-      const response = await loginUserService(data);
-      if (!response.data) {
-        throw new Error(`Error ${response.status}: ${response.status}`);
-      }
-
-      const result = response.data;
-      //  console.log("Response JSON:", result);
-      if (response.status === 200) {
-        login(result.token);
-        navigate("/user");
-        alert("Bienvenido!");
-      } else {
-        console.error(result.msg);
-        alert(result.msg);
-      }
-    } catch (error) {
-      console.error("Error en la solicitud:", error);
-      alert("Ocurrió un error, por favor intenta nuevamente.");
-    }
-  };
 
   return (
     <section className="section__signin grid">
       <form
         className="signin__form flex font-base"
-        onSubmit={handleSubmit(onSubmit)}
         noValidate // Desactivar validación del navegador
       >
         <h2 className="signin__title font-2">Bienvenido</h2>

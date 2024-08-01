@@ -27,22 +27,22 @@ const Navbar = () => {
         </form>
       </div>
       <ul className="navbar__user flex">
-        <NavLink to="/userprofile">
+        <NavLink to="/user/profile">
           <li className="navbar__user-icon font-base">
             <i className="fa-solid fa-user d-block" title="User Profile" />
           </li>
         </NavLink>
-        <NavLink to="/userprofile">
+        <NavLink to="/user/bookings">
           <li className="navbar__user-icon font-base">
             <i className="fa-solid fa-bed d-block" title="Bookings" />
           </li>
         </NavLink>
-        <NavLink to="/userprofile">
+        <NavLink to="/user/favorites">
           <li className="navbar__user-icon font-base">
             <i className="fa-solid fa-heart d-block" title="Favorites" />
           </li>
         </NavLink>
-        <NavLink to="/userprofile">
+        <NavLink to="/user/notifications">
           <li className="navbar__user-icon font-base">
             <i className="fa-solid fa-envelope d-block" title="Notifications" />
           </li>

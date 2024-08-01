@@ -1,20 +1,21 @@
 .user__details {
-  position: relative;
   --gap: 8rem;
   flex-direction: column;
   justify-content: center;
 }
 
 .user__header {
+  position: relative;
   --gap: 4rem;
   justify-content: center;
   align-items: center;
 }
 .user__img-wrapper {
-  place-content: center;
+  /* place-content: center; */
   aspect-ratio: 1;
   overflow: hidden;
-  width: 15rem;
+  width: 16rem;
+  margin-inline-start: 4rem;
 }
 
 .user__img-wrapper img {
@@ -35,7 +36,7 @@
 .user__edit-icon {
   position: absolute;
   top: 20%;
-  right: 2%;
+  right: 10%;
   border-radius: 50%;
   padding: 1rem 1.4rem;
   border: none;

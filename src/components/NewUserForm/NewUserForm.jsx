@@ -1,6 +1,7 @@
-import { useForm } from "react-hook-form";
-
 import "./newuserform.css";
+
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const NewUserForm = () => {
   const {
@@ -59,7 +60,7 @@ const NewUserForm = () => {
             {...register("email", {
               required: "Debes ingresar un correo valido",
               pattern: {
-                value: /\S+@\S+\.\S+/,
+                value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
                 message: "Correo invalido",
               },
             })}
@@ -72,25 +73,25 @@ const NewUserForm = () => {
           )}
         </div>
         <div className="signin__group grid">
-          <label htmlFor="phone" className="signin__label">
+          <label htmlFor="phoneNumber" className="signin__label">
             Telefono
           </label>
           <input
-            id="phone"
+            id="phoneNumber"
             type="tel"
             className="signin__input"
-            {...register("phone", {
+            {...register("phoneNumber", {
               required: "Debes ingresar un telefono",
               pattern: {
-                value: /^\d{10}$/,
+                value: /^\+?[1-9]\d{1,14}$/,
                 message: "Debe ser al menos 10 digitos",
               },
             })}
           />
-          {errors.phone && (
+          {errors.phoneNumber && (
             <p className="signin__error flex">
               <i className="fa-solid fa-circle-chevron-left" />
-              {errors.phone.message}
+              {errors.phoneNumber.message}
             </p>
           )}
         </div>
@@ -141,8 +142,9 @@ const NewUserForm = () => {
             {...register("role", { required: "Elige un perfil" })}
           >
             <option value="">Selecciona</option>
-            <option value="customer">Huésped</option>
-            <option value="provider">Anfitrión</option>
+            <option value="guest">Huésped</option>
+            <option value="host">Anfitrión</option>
+            <option value="admin">Admin</option>
           </select>
           {errors.role && (
             <p className="signin__error flex">

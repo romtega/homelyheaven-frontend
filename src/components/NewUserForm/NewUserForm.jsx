@@ -1,15 +1,12 @@
 import "./newuserform.css";
 
-import { jwtDecode } from "jwt-decode";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import axiosInstance from "@/services/axiosConfig";
+import { registerUserService, loginUserService } from "@/services/useServices";
+import { useAuthContext } from "@/hooks/useAuthContext";
 
 const NewUserForm = () => {
-  const [isAuth, setIsAuth] = useState(false);
-  const [userPayload, setUserPayload] = useState(null);
-
+  const { login } = useAuthContext();
   const navigate = useNavigate();
   const {
     register,
@@ -19,8 +16,7 @@ const NewUserForm = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axiosInstance.post("/api/v1/register", data);
-      console.log(response);
+      const response = await registerUserService(data);
       if (!response || !response.data || response.status !== 201) {
         throw new Error(
           `Error ${response.status}: ${
@@ -29,11 +25,24 @@ const NewUserForm = () => {
         );
       }
 
-      const { token } = response.data;
-      localStorage.setItem("token", token);
-      const payload = jwtDecode(token);
-      setIsAuth(true);
-      setUserPayload(payload);
+      const loginResponse = await loginUserService({
+        email: data.email,
+        password: data.password,
+      });
+
+      if (
+        !loginResponse ||
+        !loginResponse.data ||
+        loginResponse.status !== 200
+      ) {
+        throw new Error(
+          `Error ${loginResponse.status}: ${
+            loginResponse.data?.msg || "Unexpected error occurred"
+          }`
+        );
+      }
+      const { token } = loginResponse.data;
+      login(token);
       navigate("/user/profile");
       alert("¡Bienvenido!");
     } catch (error) {

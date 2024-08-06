@@ -1,17 +1,13 @@
 import "./loginform.css";
 
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import axiosInstance from "@/services/axiosConfig";
-import { jwtDecode } from "jwt-decode";
+import { loginUserService } from "@/services/useServices";
+import { useAuthContext } from "@/hooks/useAuthContext";
 
 const LoginForm = () => {
-  const [isAuth, setIsAuth] = useState(false);
-  const [userPayload, setUserPayload] = useState(null);
-
+  const { login } = useAuthContext();
   const navigate = useNavigate();
-
   const {
     register,
     handleSubmit,
@@ -20,7 +16,7 @@ const LoginForm = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axiosInstance.post("/api/v1/login", data);
+      const response = await loginUserService(data);
       if (!response || !response.data || response.status !== 200) {
         throw new Error(
           `Error ${response.status}: ${
@@ -30,11 +26,7 @@ const LoginForm = () => {
       }
 
       const { token } = response.data;
-      localStorage.setItem("token", token);
-
-      const payload = jwtDecode(token);
-      setIsAuth(true);
-      setUserPayload(payload);
+      login(token);
       navigate("/user/profile");
       alert("¡Bienvenido!");
     } catch (error) {

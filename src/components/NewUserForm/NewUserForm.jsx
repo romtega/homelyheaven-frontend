@@ -1,18 +1,57 @@
 import "./newuserform.css";
 
+import { jwtDecode } from "jwt-decode";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axiosInstance from "@/services/axiosConfig";
 
 const NewUserForm = () => {
+  const [isAuth, setIsAuth] = useState(false);
+  const [userPayload, setUserPayload] = useState(null);
+
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  const onSubmit = async (data) => {
+    try {
+      const response = await axiosInstance.post("/api/v1/register", data);
+      console.log(response);
+      if (!response || !response.data || response.status !== 201) {
+        throw new Error(
+          `Error ${response.status}: ${
+            response.data?.msg || "Unexpected error occurred"
+          }`
+        );
+      }
+
+      const { token } = response.data;
+      localStorage.setItem("token", token);
+      const payload = jwtDecode(token);
+      setIsAuth(true);
+      setUserPayload(payload);
+      navigate("/user/profile");
+      alert("¡Bienvenido!");
+    } catch (error) {
+      console.error("Login error:", error.message);
+      alert(
+        error.response?.data?.msg ||
+          "Ocurrió un error durante el registro de usuario. Por favor, intenta nuevamente."
+      );
+    }
+  };
+
   return (
     <section className="section__signin grid">
-      <form className="signin__form flex font-base" noValidate>
+      <form
+        className="signin__form flex font-base"
+        noValidate
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <h2 className="signin__title font-2">Registrate</h2>
         <div className="signin__group grid">
           <label htmlFor="firstName" className="signin__label">

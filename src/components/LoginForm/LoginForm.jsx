@@ -7,7 +7,7 @@ import axiosInstance from "@/services/axiosConfig";
 import { jwtDecode } from "jwt-decode";
 
 const LoginForm = () => {
-  const [isAuth, SetIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
   const [userPayload, setUserPayload] = useState(null);
 
   const navigate = useNavigate();
@@ -21,7 +21,6 @@ const LoginForm = () => {
   const onSubmit = async (data) => {
     try {
       const response = await axiosInstance.post("/api/v1/login", data);
-
       if (!response || !response.data || response.status !== 200) {
         throw new Error(
           `Error ${response.status}: ${
@@ -34,7 +33,7 @@ const LoginForm = () => {
       localStorage.setItem("token", token);
 
       const payload = jwtDecode(token);
-      SetIsAuth(true);
+      setIsAuth(true);
       setUserPayload(payload);
       navigate("/user/profile");
       alert("¡Bienvenido!");

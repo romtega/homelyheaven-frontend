@@ -3,15 +3,18 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import RoutesIndex from "@/routes/RoutesIndex";
 import { AuthProvider } from "./context/AuthContext";
+import { UserProvider } from "./context/UserContext";
 
 const App = () => {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <Navbar />
-        <RoutesIndex />
-        <Footer />
-      </BrowserRouter>
+      <UserProvider>
+        <BrowserRouter>
+          <Navbar />
+          <RoutesIndex />
+          <Footer />
+        </BrowserRouter>
+      </UserProvider>
     </AuthProvider>
   );
 };

@@ -25,10 +25,7 @@ const NewUserForm = () => {
         );
       }
 
-      const loginResponse = await loginUserService({
-        email: data.email,
-        password: data.password,
-      });
+      const loginResponse = await loginUserService(data);
 
       if (
         !loginResponse ||
@@ -41,6 +38,7 @@ const NewUserForm = () => {
           }`
         );
       }
+
       const { token } = loginResponse.data;
       login(token);
       navigate("/user/profile");

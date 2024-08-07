@@ -3,14 +3,15 @@
 import "./userprofile.css";
 
 import { Routes, Route, NavLink } from "react-router-dom";
+import { useAuthContext } from "@/hooks/useAuthContext";
 
 import UserInfo from "@/components/UserInfo";
 import UserBookings from "@/components/UserBookings";
 import UserFavorites from "@/components/UserFavorites";
 import UserNotifications from "@/components/UserNotifications";
-import LoginForm from "@/components/LoginForm";
 
 const UserProfile = () => {
+  const { logout } = useAuthContext();
   return (
     <section className="section__user grid">
       <aside className="user__menu flex font-lg text-gray">
@@ -49,7 +50,11 @@ const UserProfile = () => {
           <i className="fa-solid fa-envelope d-block" title="Messages" />
           Notificaciones
         </NavLink>
-        <NavLink to="/" className="user__category flex text-accent">
+        <NavLink
+          to="/"
+          onClick={logout}
+          className="user__category flex text-accent"
+        >
           <i className="fa-solid fa-right-from-bracket" /> Cerrar sesión
         </NavLink>
       </aside>

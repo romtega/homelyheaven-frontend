@@ -62,3 +62,15 @@
   outline: 1px solid hsl(var(--clr-primary));
   transform: scale(1.2);
 }
+
+.navbar__user-icon-logout {
+  background-color: hsl(var(--clr-accent), 0.2);
+  color: hsl(var(--clr-accent));
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar__user-icon-logout:hover,
+.navbar__user-icon-logout:active {
+  outline: 1px solid hsl(var(--clr-accent));
+  transform: scale(1.2);
+}

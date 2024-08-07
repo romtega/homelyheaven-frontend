@@ -2,9 +2,11 @@
 import "./navbar.css";
 import Logo from "@/assets/logo.jpeg";
 
+import { useAuthContext } from "@/hooks/useAuthContext";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  const { isAuth, logout } = useAuthContext();
   return (
     <nav className="section__navbar flex">
       <div className="navbar__logo-wrapper font-lg text-primary">
@@ -27,31 +29,47 @@ const Navbar = () => {
         </form>
       </div>
       <ul className="navbar__user flex">
-        <NavLink to="/user/profile">
-          <li className="navbar__user-icon font-base">
-            <i className="fa-solid fa-user d-block" title="User Profile" />
-          </li>
-        </NavLink>
-        <NavLink to="/user/bookings">
-          <li className="navbar__user-icon font-base">
-            <i className="fa-solid fa-bed d-block" title="Bookings" />
-          </li>
-        </NavLink>
-        <NavLink to="/user/favorites">
-          <li className="navbar__user-icon font-base">
-            <i className="fa-solid fa-heart d-block" title="Favorites" />
-          </li>
-        </NavLink>
-        <NavLink to="/user/notifications">
-          <li className="navbar__user-icon font-base">
-            <i className="fa-solid fa-envelope d-block" title="Notifications" />
-          </li>
-        </NavLink>
-        <NavLink to="/login">
-          <li className="navbar__user-icon font-base">
-            <i className="fa-regular fa-user d-block" title="Login" />
-          </li>
-        </NavLink>
+        {isAuth ? (
+          <>
+            <NavLink to="/user/profile">
+              <li className="navbar__user-icon font-base">
+                <i className="fa-solid fa-user d-block" title="User Profile" />
+              </li>
+            </NavLink>
+            <NavLink to="/user/bookings">
+              <li className="navbar__user-icon font-base">
+                <i className="fa-solid fa-bed d-block" title="Bookings" />
+              </li>
+            </NavLink>
+            <NavLink to="/user/favorites">
+              <li className="navbar__user-icon font-base">
+                <i className="fa-solid fa-heart d-block" title="Favorites" />
+              </li>
+            </NavLink>
+            <NavLink to="/user/notifications">
+              <li className="navbar__user-icon font-base">
+                <i
+                  className="fa-solid fa-envelope d-block"
+                  title="Notifications"
+                />
+              </li>
+            </NavLink>
+            <NavLink to="/" onClick={logout}>
+              <li className="navbar__user-icon navbar__user-icon-logout font-base">
+                <i
+                  className="fa-solid fa-arrow-right-from-bracket d-block"
+                  title="Logout"
+                />
+              </li>
+            </NavLink>
+          </>
+        ) : (
+          <NavLink to="/login">
+            <li className="navbar__user-icon font-base">
+              <i className="fa-regular fa-user d-block" title="Login" />
+            </li>
+          </NavLink>
+        )}
       </ul>
     </nav>
   );

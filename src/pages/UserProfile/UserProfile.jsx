@@ -11,7 +11,7 @@ import UserNotifications from "@/components/UserNotifications";
 const UserProfile = () => {
   const { userPayload, logout } = useAuthContext();
   const { userData, loading } = useUserContext();
-  const currentUser = userData.find((user) => user._id === userPayload?.id);
+  // const currentUser = userData.find((user) => user._id === userPayload?.id);
 
   if (!userPayload) return <div>User not authenticated</div>;
 
@@ -65,19 +65,19 @@ const UserProfile = () => {
         <Routes>
           <Route
             path="profile"
-            element={<UserInfo loading={loading} user={currentUser} />}
+            element={<UserInfo loading={loading} user={userData} />}
           />
           <Route
             path="bookings"
-            element={<UserBookings loading={loading} user={currentUser} />}
+            element={<UserBookings loading={loading} user={userData} />}
           />
           <Route
             path="favorites"
-            element={<UserFavorites loading={loading} user={currentUser} />}
+            element={<UserFavorites loading={loading} user={userData} />}
           />
           <Route
             path="notifications"
-            element={<UserNotifications loading={loading} user={currentUser} />}
+            element={<UserNotifications loading={loading} user={userData} />}
           />
         </Routes>
       </main>

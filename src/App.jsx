@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import RoutesIndex from "@/routes/RoutesIndex";
 import { AuthProvider } from "./context/AuthContext";
 import { UserProvider } from "./context/UserContext";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 const App = () => {
   return (

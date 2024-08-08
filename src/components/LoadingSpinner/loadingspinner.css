@@ -2,15 +2,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Ocupa el 100% de la altura de la vista */
+  height: var(
+    --height-minus-navbar
+  ); /* Ocupa el 100% de la altura de la vista */
 }
 
 .spinner .loader {
-  border: 8px solid #f3f3f3; /* Color de fondo */
-  border-top: 8px solid #3498db; /* Color del spinner */
+  border: 10px solid hsl(var(--clr-white)); /* Color de fondo */
+  border-top: 10px solid hsl(var(--clr-primary)); /* Color del spinner */
   border-radius: 50%;
-  width: 60px; /* Tamaño del spinner */
-  height: 60px; /* Tamaño del spinner */
+  width: 100px; /* Tamaño del spinner */
+  height: 100px; /* Tamaño del spinner */
   animation: spin 1s linear infinite;
 }
 

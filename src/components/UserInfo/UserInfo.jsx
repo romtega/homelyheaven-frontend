@@ -5,14 +5,8 @@ import LoadingSpinner from "@/components/LoadingSpinner";
 const UserInfo = ({ loading, user }) => {
   if (loading) return <LoadingSpinner />;
 
-  const {
-    username = "No username",
-    role = "No role",
-    firstName = "No first name",
-    lastName = "No last name",
-    email = "No email",
-    phoneNumber = "No phone number",
-  } = user || {};
+  const { username, role, firstName, lastName, email, phoneNumber } =
+    user || {};
 
   return (
     <div className="user__details flex font-lg">

@@ -1,21 +1,84 @@
 import "./housedetails.css";
 
 import GuestTestimonial from "@/components/GuestTestimonial";
-import guestImg from "@/assets/hero-guest.jpg";
-import Map from "@/assets/map.png";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
+import { useParams } from "react-router-dom";
+import { usePropertyContext } from "@/hooks/usePropertyContext";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
+import guestImg from "@/assets/hero-guest.jpg";
+import HostImg from "@/assets/hero-host.jpg";
+
+import Map from "@/assets/map.png";
+
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/images/marker-icon-2x.png",
+  iconUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/images/marker-icon.png",
+  shadowUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/images/marker-shadow.png",
+});
+
+const environmentIcons = {
+  desierto: "fa-solid fa-mountain-sun",
+  montaña: "fa-solid fa-mountain",
+  playa: "fa-solid fa-umbrella-beach",
+  ciudad: "fa-solid fa-city",
+};
+
 const HouseDetails = () => {
+  const { propertyData, loading } = usePropertyContext();
+  const { id } = useParams();
+  const property = propertyData.find((property) => property._id === id);
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
+  if (!property) {
+    return <p>Property not found</p>;
+  }
+
+  const {
+    location: {
+      address,
+      city,
+      state,
+      postalCode,
+      country,
+      latitude,
+      longitude,
+    },
+    title,
+    description,
+    pricePerNight,
+    bedrooms,
+    bathrooms,
+    maxGuests,
+    environment,
+    ratings: { average, count },
+    images,
+  } = property;
+
+  const position = [latitude, longitude];
+  const environmentIcon =
+    environmentIcons[environment] || "fa-solid fa-question";
+
   return (
     <section className="section__housedetails grid">
       <div className="housedetails__info flex">
         <div className="housedetails__img-wrapper">
           <Carousel
-            showArrows={true}
+            showArrows
             showThumbs={false}
-            showStatus={true}
+            showStatus
             autoPlay
             infiniteLoop
           >
@@ -23,13 +86,13 @@ const HouseDetails = () => {
               <img src={guestImg} alt="Hotel" className="housedetails__img" />
             </div>
             <div>
-              <img src={guestImg} alt="Hotel" className="housedetails__img" />
+              <img src={HostImg} alt="Hotel" className="housedetails__img" />
             </div>
             <div>
               <img src={guestImg} alt="Hotel" className="housedetails__img" />
             </div>
             <div>
-              <img src={guestImg} alt="Hotel" className="housedetails__img" />
+              <img src={HostImg} alt="Hotel" className="housedetails__img" />
             </div>
             <div>
               <img src={guestImg} alt="Hotel" className="housedetails__img" />
@@ -38,15 +101,15 @@ const HouseDetails = () => {
         </div>
         <div className="housedetails__header flex">
           <div className="housedetails__location">
-            <h2 className="housedetails__hotel-name font-3">
-              Casa en la montaña
-            </h2>
+            <h2 className="housedetails__hotel-name font-3">{title}</h2>
             <span className="housedetails__city font-base text-gray">
-              Badajoz, España
+              {city}, {state}, {country}
             </span>
           </div>
           <div className="housedetails__pricing">
-            <span className="housedetails__price font-3 fw-3">$180 </span>
+            <span className="housedetails__price font-3 fw-3">
+              ${pricePerNight}
+            </span>
             <span className="housedetails__price-detail font-sm">
               por noche
             </span>
@@ -54,34 +117,31 @@ const HouseDetails = () => {
         </div>
         <ul className="housedetails__perks flex text-secondary">
           <li className="housedetails__perk font-base">
-            <i className="fa-solid fa-house" />
+            <i className="fa-solid fa-bed" />
             <span className="housedetails__perk-description font-sm">Casa</span>
           </li>
           <li className="housedetails__perk font-1">
-            <i className="fa-solid fa-sun" />
+            <i className={environmentIcon} />
             <span className="housedetails__perk-description font-sm capitalize">
-              Desert
+              {environment}
             </span>
           </li>
           <li className="housedetails__perk font-1">
             <i className="fa-solid fa-shower" />
             <span className="housedetails__perk-description font-sm">
-              2 Baños
+              {bathrooms} {bathrooms === 1 ? "Baño" : "Baños"}
             </span>
           </li>
           <li className="housedetails__perk font-1">
-            <i className="fa-solid fa-bed" />
+            <i className="fa-solid fa-users" />
             <span className="housedetails__perk-description font-sm">
-              4 Personas
+              {maxGuests} {maxGuests === 1 ? "Persona" : "Personas"}
             </span>
           </li>
         </ul>
         <div className="housedetails__description grid">
           <div className="housedetails__text flex font-base">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Recusandae explicabo, sequi nostrum, unde consectetur sint fugi
-            </p>
+            <p>{description}</p>
             <div className="housedetails__cta flex">
               <button className="housedetails__btn bg-accent text-white fw-3">
                 Reservar
@@ -93,7 +153,19 @@ const HouseDetails = () => {
             </div>
           </div>
           <div className="housedetails__map-wrapper">
-            <img src={Map} alt="" />
+            <MapContainer
+              center={position}
+              zoom={13}
+              style={{ height: "200px", width: "100%" }}
+            >
+              <TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              />
+              <Marker position={position}>
+                <Popup>{title}</Popup>
+              </Marker>
+            </MapContainer>
           </div>
         </div>
       </div>

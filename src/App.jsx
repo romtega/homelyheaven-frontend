@@ -4,19 +4,21 @@ import Footer from "@/components/Footer";
 import RoutesIndex from "@/routes/RoutesIndex";
 import { AuthProvider } from "./context/AuthContext";
 import { UserProvider } from "./context/UserContext";
-import LoadingSpinner from "./components/LoadingSpinner";
+import { PropertyProvider } from "./context/PropertyContext";
 
 const App = () => {
   return (
-    <AuthProvider>
-      <UserProvider>
-        <BrowserRouter>
-          <Navbar />
-          <RoutesIndex />
-          <Footer />
-        </BrowserRouter>
-      </UserProvider>
-    </AuthProvider>
+    <PropertyProvider>
+      <AuthProvider>
+        <UserProvider>
+          <BrowserRouter>
+            <Navbar />
+            <RoutesIndex />
+            <Footer />
+          </BrowserRouter>
+        </UserProvider>
+      </AuthProvider>
+    </PropertyProvider>
   );
 };
 

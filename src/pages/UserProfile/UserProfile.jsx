@@ -11,7 +11,6 @@ import UserNotifications from "@/components/UserNotifications";
 const UserProfile = () => {
   const { userPayload, logout } = useAuthContext();
   const { userData, loading } = useUserContext();
-  // const currentUser = userData.find((user) => user._id === userPayload?.id);
 
   if (!userPayload) return <div>User not authenticated</div>;
 

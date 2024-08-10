@@ -1,25 +1,25 @@
-.housedetails__testimonial {
+.housedetails__reviews {
   flex-direction: column;
   border-radius: var(--border-radius-1);
   padding: 2rem 2.4rem;
 }
 
-.testimonials__header {
+.reviews__header {
   align-items: center;
 }
 
-.testimonials__img-wrapper {
+.reviews__img-wrapper {
   border-radius: 50vw;
   overflow: hidden;
   height: 6rem;
   aspect-ratio: 1;
 }
 
-.testimonials__img-wrapper img {
+.reviews__img-wrapper img {
   height: 100%;
   object-fit: cover;
 }
 
-.testimonials__description {
+.reviews__description {
   padding-inline: 1.2rem;
 }

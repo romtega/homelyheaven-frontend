@@ -1,10 +1,13 @@
 import "./housedetails.css";
 
-import GuestTestimonial from "@/components/GuestTestimonial";
+import GuestReviews from "@/components/GuestReviews";
 import LoadingSpinner from "@/components/LoadingSpinner";
 
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { usePropertyContext } from "@/hooks/usePropertyContext";
+import { useReviewsContext } from "@/hooks/useReviewsContext";
+
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -13,8 +16,6 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import guestImg from "@/assets/hero-guest.jpg";
 import HostImg from "@/assets/hero-host.jpg";
-
-import Map from "@/assets/map.png";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -34,11 +35,22 @@ const environmentIcons = {
 };
 
 const HouseDetails = () => {
-  const { propertyData, loading } = usePropertyContext();
+  const { propertyData, loading: propertyLoading } = usePropertyContext();
+  const {
+    reviewsData,
+    loading: reviewsLoading,
+    setPropertyId,
+  } = useReviewsContext();
   const { id } = useParams();
   const property = propertyData.find((property) => property._id === id);
 
-  if (loading) {
+  useEffect(() => {
+    if (id) {
+      setPropertyId(id);
+    }
+  }, [id, setPropertyId]);
+
+  if (propertyLoading || reviewsLoading) {
     return <LoadingSpinner />;
   }
 
@@ -97,7 +109,7 @@ const HouseDetails = () => {
             <div>
               <img src={guestImg} alt="Hotel" className="housedetails__img" />
             </div>
-          </Carousel>{" "}
+          </Carousel>
         </div>
         <div className="housedetails__header flex">
           <div className="housedetails__location">
@@ -111,7 +123,7 @@ const HouseDetails = () => {
               ${pricePerNight}
             </span>
             <span className="housedetails__price-detail font-sm">
-              por noche
+              / por noche
             </span>
           </div>
         </div>
@@ -172,10 +184,13 @@ const HouseDetails = () => {
 
       <aside className="housedetails__reviews flex">
         <h2 className="housedetails__reviews-title font-2">Reseñas</h2>
-        <GuestTestimonial />
-        <GuestTestimonial />
-        <GuestTestimonial />
-        <GuestTestimonial />
+        {reviewsData.length === 0 ? (
+          <p>No reviews available</p>
+        ) : (
+          reviewsData.map((review) => (
+            <GuestReviews key={review._id} review={review} />
+          ))
+        )}
       </aside>
     </section>
   );

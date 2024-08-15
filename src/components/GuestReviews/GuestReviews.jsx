@@ -1,5 +1,5 @@
 import "./guestreviews.css";
-import User from "@/assets/user.jpg";
+import User from "@/assets/user.png";
 
 const GuestReviews = ({ review }) => {
   const {

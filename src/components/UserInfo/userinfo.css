@@ -15,7 +15,7 @@
   aspect-ratio: 1;
   overflow: hidden;
   width: 16rem;
-  margin-inline-start: 4rem;
+  margin-inline-start: 8rem;
 }
 
 .user__img-wrapper img {

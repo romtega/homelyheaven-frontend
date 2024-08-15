@@ -89,26 +89,20 @@ const HouseDetails = () => {
         <div className="housedetails__img-wrapper">
           <Carousel
             showArrows
-            showThumbs={false}
-            showStatus
+            showThumbs
+            showStatus={false}
             autoPlay
             infiniteLoop
           >
-            <div>
-              <img src={guestImg} alt="Hotel" className="housedetails__img" />
-            </div>
-            <div>
-              <img src={HostImg} alt="Hotel" className="housedetails__img" />
-            </div>
-            <div>
-              <img src={guestImg} alt="Hotel" className="housedetails__img" />
-            </div>
-            <div>
-              <img src={HostImg} alt="Hotel" className="housedetails__img" />
-            </div>
-            <div>
-              <img src={guestImg} alt="Hotel" className="housedetails__img" />
-            </div>
+            {images.map((image, index) => (
+              <div key={index}>
+                <img
+                  src={image}
+                  alt={`Property image ${index + 1}`}
+                  className="housedetails__img"
+                />
+              </div>
+            ))}
           </Carousel>
         </div>
         <div className="housedetails__header flex">

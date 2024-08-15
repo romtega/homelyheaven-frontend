@@ -20,6 +20,7 @@ const HouseItem = ({ property }) => {
     maxGuests,
     ratings: { average },
     pricePerNight,
+    images,
   } = property;
 
   const bedroomText = bedrooms === 1 ? "Cuarto" : "Cuartos";
@@ -33,7 +34,7 @@ const HouseItem = ({ property }) => {
     <li className="housing__profile grid">
       <div className="housing__img">
         <img
-          src={HostImg}
+          src={images[0]}
           alt="Imagen de sitio"
           className="housing__img-content"
         />

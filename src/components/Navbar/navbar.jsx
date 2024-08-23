@@ -3,10 +3,23 @@ import "./navbar.css";
 import Logo from "@/assets/logo.jpeg";
 
 import { useAuthContext } from "@/hooks/useAuthContext";
-import { NavLink } from "react-router-dom";
+import { usePropertyContext } from "@/hooks/usePropertyContext";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const { isAuth, logout } = useAuthContext();
+  const { searchBar, setSearchBar } = usePropertyContext();
+  const navigate = useNavigate();
+
+  const handleSearchChange = (e) => {
+    setSearchBar(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    navigate("/housing");
+  };
+
   return (
     <nav className="section__navbar flex">
       <div className="navbar__logo-wrapper font-lg text-primary">
@@ -15,11 +28,13 @@ const Navbar = () => {
         </NavLink>
       </div>
       <div className="navbar__search-wrapper font-base">
-        <form className="navbar__form flex">
+        <form className="navbar__form flex" onSubmit={handleSearchSubmit}>
           <input
             className="navbar__input"
             type="text"
             placeholder="Busca un alojamiento"
+            value={searchBar}
+            onChange={handleSearchChange}
           />
           <NavLink to="/housing">
             <button className="navbar__btn bg-primary text-white" type="submit">

@@ -5,6 +5,7 @@ const PropertyContext = createContext();
 
 function PropertyProvider({ children }) {
   const [propertyData, setPropertyData] = useState([]);
+  const [searchBar, setSearchBar] = useState("");
   const [loading, setLoading] = useState(true);
 
   const fetchAllProperties = async () => {
@@ -22,7 +23,7 @@ function PropertyProvider({ children }) {
     fetchAllProperties();
   }, []);
 
-  const dataContext = { propertyData, loading };
+  const dataContext = { propertyData, loading, searchBar, setSearchBar };
   return (
     <PropertyContext.Provider value={dataContext}>
       {children}

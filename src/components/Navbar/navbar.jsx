@@ -18,6 +18,7 @@ const Navbar = () => {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     navigate("/housing");
+    setSearchBar("");
   };
 
   return (

@@ -1,12 +1,9 @@
 import "./userfavorites.css";
 
+import HouseItem from "@/components/HouseItem";
+
 const UserFavorites = () => {
-  return (
-    <h1>
-      Estamos trabajando en la seccion de favoritos
-      <i className="fa-solid fa-hammer"></i>
-    </h1>
-  );
+  return;
 };
 
 export default UserFavorites;
